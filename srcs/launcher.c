@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 14:08:04 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/04 23:35:37 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/05 17:48:59 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,11 @@ static void		ft_parsing(char **tab, t_env *envir)
 		else if (ft_strequ(tab[0], "clear"))//le clear tu doit allez le chercher dan le bin donc enleve le un jour.
 			ft_putstr("\e[1;1H\e[2J");
 		else if (ft_strequ(tab[0], "env"))//tu dois gérer tout les parametres possible
-			while (envir->env[i])
-			{
-				ft_putstr(envir->env[i++]);
-				ft_putchar('\n');
-			}
+			ft_env_builtin(envir->env);
 		else if (ft_strequ(tab[0], "setenv"))
-			ft_add_env(envir, tab[1], tab[2], 0);
+			ft_setenv_builtin(envir, tab[1], tab[2], 0);
+		else if (ft_strequ(tab[0], "unsetenv"))
+			ft_unsetenv_builtin(envir, tab[1]);
 	}
 }
 

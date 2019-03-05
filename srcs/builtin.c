@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:03:12 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/04 17:29:06 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/05 18:43:46 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,68 @@ void	ft_cd_builtin(char **tab)
 	}
 	else if (chdir(tab[1]) == -1)
 		ft_puterror(2, tab[1]);
+}
+
+void	ft_env_builtin(char **env)
+{
+	int i;
+
+	i = 0;
+	while (env[i])
+	{
+		ft_putstr(env[i++]);
+		ft_putchar('\n');
+	}
+}
+
+void	ft_setenv_builtin(t_env *envir, char *left, char *right, int i)
+{
+	char **tmp;
+	char *str_tmp;
+
+	if (!left || !right)
+		return ;
+	str_tmp = ft_strnew(ft_strlen(left) + ft_strlen(right));
+	tmp = copy_tab(envir);
+	ft_tabdel(ft_count_tab(envir->env), &envir->env);
+	envir->env = (char **)ft_memalloc(sizeof(char *) * (ft_count_tab(tmp) + 2));
+	while (tmp[i])
+	{
+		envir->env[i] = ft_strdup(tmp[i]);
+		i++;
+	}
+	ft_strcpy(str_tmp, left);
+	ft_strcat(str_tmp, "=");
+	ft_strcat(str_tmp, right);
+	envir->env[i] = ft_strdup(str_tmp);
+	i++;
+	free(str_tmp);
+	ft_tabdel(ft_count_tab(tmp), &tmp);
+}
+
+void	ft_unsetenv_builtin(t_env *envir, char *del)
+{
+	int i;
+	char **tmp;
+	char *str;
+	char *str_tmp;
+
+	i = 0;
+	tmp = copy_tab(envir);
+	ft_tabdel(ft_count_tab(envir->env), &envir->env);
+	envir->env = (char **)ft_memalloc(sizeof(char *) * (ft_count_tab(tmp) - 1));
+	while (tmp[i])
+	{
+		str_tmp = ft_strdup(tmp[i]);
+		str = ft_strrev(&ft_strchr(ft_strrev(tmp[i]), '=')[1]);
+		if (!ft_strequ(del, str))
+			envir->env[i] = ft_strdup(str_tmp);
+		ft_strclr(str_tmp);
+		free(str_tmp);
+		str_tmp = NULL;
+		ft_strclr(str);
+		str = NULL;
+		i++;
+	}
+	ft_tabdel(ft_count_tab(tmp), &tmp);
 }

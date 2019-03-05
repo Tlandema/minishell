@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 18:01:29 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/04 23:37:22 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/05 16:48:40 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,29 +72,4 @@ char		**copy_tab(t_env *envir)
 	}
 	copy[i] = NULL;
 	return (copy);
-}
-
-void		ft_add_env(t_env *envir, char *left, char *right, int i)
-{
-	char **tmp;
-	char *str_tmp;
-
-	if (!left || !right)
-		return ;
-	str_tmp = ft_strnew(ft_strlen(left) + ft_strlen(right));
-	tmp = copy_tab(envir);
-	ft_tabdel(ft_count_tab(envir->env), &envir->env);
-	envir->env = (char **)ft_memalloc(sizeof(char *) * (ft_count_tab(tmp) + 2));
-	while (tmp[i])
-	{
-		envir->env[i] = ft_strdup(tmp[i]);
-		i++;
-	}
-	ft_strcpy(str_tmp, left);
-	ft_strcat(str_tmp, "=");
-	ft_strcat(str_tmp, right);
-	envir->env[i] = ft_strdup(str_tmp);
-	i++;
-	free(str_tmp);
-	ft_tabdel(ft_count_tab(tmp), &tmp);
 }
