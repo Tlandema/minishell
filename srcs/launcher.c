@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 14:08:04 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/05 19:46:55 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/05 22:13:16 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ static void		ft_parsing(char **tab, t_env *envir)
 			ft_setenv_builtin(envir, tab[1], tab[2], 0);
 		else if (ft_strequ(tab[0], "unsetenv"))
 			ft_unsetenv_builtin(envir, tab[1]);
+		else
+			return ;
 	}
 }
 
@@ -65,9 +67,11 @@ int			main(int argc, char **argv, char **envp)
 		ft_print_prompt();
 		get_next_instruction(&str);//ca malloc cette merde donc free STR stp;
 		tab = ft_strsplit(str, ' ');//ca aussi ca malloc alors free TAB stp;
-		ft_parsing(tab, envir);
+		if (tab)
+			ft_parsing(tab, envir);
 		free(str);
 		str = NULL;
+		if (tab)
 		ft_tabdel(ft_count_tab(tab), &tab);
 	}
 }
