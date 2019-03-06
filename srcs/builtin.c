@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:03:12 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/06 01:43:27 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/06 10:30:45 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <limits.h>
 #include <stdlib.h>
 
-void	ft_cd_builtin(char **tab)
+void	ft_cd_builtin(char **tab, t_env *envir)
 {
 	int i;
 
@@ -28,6 +28,10 @@ void	ft_cd_builtin(char **tab)
 		if (tab[3])
 			ft_putstr(tab[3]);
 	}
+	else if (tab[2])
+		ft_cd_2_arg(tab, envir);
+	else if (!tab[1] || ft_strequ(tab[1],"~"))
+		chdir("/Users/tlandema");
 	else if (chdir(tab[1]) == -1)
 		ft_puterror(2, tab[1]);
 }

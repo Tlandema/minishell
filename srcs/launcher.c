@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 14:08:04 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/06 01:53:52 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/06 09:27:11 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ static void	ft_print_prompt(void)
 
 	path = ft_strnew(PATH_MAX);
 	ft_putstr("mynishell (\033[96m");
-	ft_putstr(&ft_strrchr(getcwd(path, PATH_MAX), '/')[1]);
+	if (ft_strequ(&ft_strrchr(getcwd(path, PATH_MAX), '/')[1], "tlandema"))
+		ft_putstr("~");
+	else
+		ft_putstr(&ft_strrchr(getcwd(path, PATH_MAX), '/')[1]);
 	ft_putstr("\033[39;49m) ");
 	free(path);
 }
@@ -33,11 +36,9 @@ static void		ft_parsing(char **tab, t_env *envir)
 	if (tab)
 	{
 		if (ft_strequ(tab[0], "cd"))
-			ft_cd_builtin(tab);
+			ft_cd_builtin(tab, envir);
 		else if (ft_strequ(tab[0], "exit"))
 			exit(0);//dans le builtin de exit tu freera tout avant de exit;
-		else if (ft_strequ(tab[0], "clear"))//le clear tu doit allez le chercher dan le bin donc enleve le un jour.
-			ft_putstr("\e[1;1H\e[2J");
 		else if (ft_strequ(tab[0], "env"))//tu dois gérer tout les parametres possible
 			ft_print_tab(envir->env);
 		else if (ft_strequ(tab[0], "setenv"))
