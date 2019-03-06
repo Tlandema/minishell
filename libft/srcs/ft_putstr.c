@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 15:51:03 by tlandema          #+#    #+#             */
-/*   Updated: 2019/01/05 08:37:58 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/05 23:24:08 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 
 void	ft_putstr(char const *s)
 {
-	if (s == NULL)
-		return ((void)0);
-	while (*s)
-		write(1, s++, 1);
+	int i;
+
+	i = 0;
+	while(s[i])
+	{
+		ft_putchar(s[i]);
+		i++;
+	}
 }

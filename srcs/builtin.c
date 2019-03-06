@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:03:12 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/05 22:06:32 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/06 01:43:27 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,6 @@ void	ft_cd_builtin(char **tab)
 	}
 	else if (chdir(tab[1]) == -1)
 		ft_puterror(2, tab[1]);
-}
-
-void	ft_env_builtin(char **env)
-{
-	int i;
-
-	i = 0;
-	while (env[i])
-	{
-		ft_putstr(env[i++]);
-		ft_putchar('\n');
-	}
 }
 
 void	ft_setenv_builtin(t_env *envir, char *left, char *right, int i)
@@ -103,4 +91,22 @@ void	ft_unsetenv_builtin(t_env *envir, char *del)
 		}
 		ft_tabdel(ft_count_tab(tmp), &tmp);
 	}
+}
+
+void	ft_echo_builtin(t_env *envir, char **tab)
+{
+	int i;
+	char *str;//deletecasertarien
+
+	i = 1;
+	if (ft_strequ(tab[1], "-n"))
+		i = 2;
+	str = envir->env[i];
+	while (tab[i])
+	{
+		ft_putstr(tab[i]);
+		ft_putchar(' ');
+		i++;
+	}
+	ft_putchar('\n');
 }

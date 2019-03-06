@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 18:01:29 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/05 19:58:51 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/05 23:42:23 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,22 @@ static char	**ft_fill_environ(char **environ)
 	return (environ);
 }
 
-char		**ft_create_environ(char **envp)
+void	ft_create_environ(char **envp, t_env *envir)
 {
-	char	**environ;
 	int		i;
 
 	i = 0;
-	environ = NULL;
 	if (envp[0])
 	{
-		environ = (char **)ft_memalloc(sizeof(char *) * ft_count_tab(envp));
+		envir->env = (char **)ft_memalloc(sizeof(char *) * ((ft_count_tab(envp) + 1)));
 		while (envp[i])
 		{
-			environ[i] = ft_strdup(envp[i]);
+			envir->env[i] = ft_strdup(envp[i]);
 			i++;
 		}
 	}
 	else
-		environ = ft_fill_environ(environ);
-	return (environ);
+		envir->env = ft_fill_environ(envir->env);
 }
 
 int			ft_check_env(t_env *envir, char *check)

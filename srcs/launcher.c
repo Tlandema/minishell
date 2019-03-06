@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 14:08:04 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/05 22:13:16 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/06 01:53:52 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@ static void	ft_print_prompt(void)
 
 static void		ft_parsing(char **tab, t_env *envir)
 {
-	int i;
-
-	i = 0;
 	if (tab)
 	{
 		if (ft_strequ(tab[0], "cd"))
@@ -42,13 +39,16 @@ static void		ft_parsing(char **tab, t_env *envir)
 		else if (ft_strequ(tab[0], "clear"))//le clear tu doit allez le chercher dan le bin donc enleve le un jour.
 			ft_putstr("\e[1;1H\e[2J");
 		else if (ft_strequ(tab[0], "env"))//tu dois gérer tout les parametres possible
-			ft_env_builtin(envir->env);
+			ft_print_tab(envir->env);
 		else if (ft_strequ(tab[0], "setenv"))
 			ft_setenv_builtin(envir, tab[1], tab[2], 0);
 		else if (ft_strequ(tab[0], "unsetenv"))
 			ft_unsetenv_builtin(envir, tab[1]);
+		else if (ft_strequ(tab[0], "echo"))
+			ft_echo_builtin(envir, tab);
 		else
-			return ;
+			ft_command_parsing(envir, tab);
+		return ;
 	}
 }
 
@@ -61,7 +61,7 @@ int			main(int argc, char **argv, char **envp)
 	argc = 0;
 	argv = NULL;
 	envir = (t_env *)ft_memalloc(sizeof(t_env));
-	envir->env = ft_create_environ(envp);
+	ft_create_environ(envp, envir);
 	while (1)
 	{
 		ft_print_prompt();
