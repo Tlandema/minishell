@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 01:52:49 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/06 08:59:55 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 03:46:15 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 static void	ft_check_and_exec(char **com_arg, char **paths, t_env *envir)
 {
-	int i;
-	char *str;
+	int		i;
+	char	*str;
 
 	i = 0;
 	if (access(com_arg[0], X_OK) == 0)
@@ -50,10 +50,10 @@ static void	ft_check_and_exec(char **com_arg, char **paths, t_env *envir)
 
 void		ft_command_parsing(t_env *envir, char **tab)
 {
-	int i;
-	char *paths_str;
-	char *paths_tmp;
-	char **paths;
+	int		i;
+	char	*paths_str;
+	char	*paths_tmp;
+	char	**paths;
 
 	i = 0;
 	while (envir->env[i]

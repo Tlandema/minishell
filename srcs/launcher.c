@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 14:08:04 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/06 09:27:11 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 03:50:18 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	ft_print_prompt(void)
 	free(path);
 }
 
-static void		ft_parsing(char **tab, t_env *envir)
+static void	ft_parsing(char **tab, t_env *envir)
 {
 	if (tab)
 	{

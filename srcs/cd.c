@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:18:17 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 01:48:26 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 03:43:11 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 
 static void	ft_replace(char *str, char *to_r, char *r_by)
 {
-	char *copy;
-	int j;
-	int i;
-	int k;
+	char	*copy;
+	int		j;
+	int		i;
+	int		k;
 
 	copy = ft_strnew(PATH_MAX);
 	j = -1;
@@ -47,9 +47,9 @@ static void	ft_replace(char *str, char *to_r, char *r_by)
 
 void		ft_cd_2_arg(char **tab, t_env *envir)
 {
-	int i;
-	char *tmp;
-	char *str;
+	int		i;
+	char	*tmp;
+	char	*str;
 
 	i = 0;
 	while (envir->env[i]
@@ -65,5 +65,7 @@ void		ft_cd_2_arg(char **tab, t_env *envir)
 			ft_replace(str, tab[1], tab[2]);
 			free(tmp);
 		}
+		else
+			ft_puterror(3, tab[1]);
 	}
 }

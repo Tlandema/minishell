@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:17:38 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/05 19:46:56 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 02:19:44 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_puterror(int i, char *name)
 	{
 		if (!access(name, F_OK) && access(name, X_OK) == -1)
 		{
-			ft_putstr("cd: permission denied :");
+			ft_putstr("cd: permission denied: ");
 			ft_putstr(name);
 			ft_putchar('\n');
 		}
@@ -35,5 +35,11 @@ void	ft_puterror(int i, char *name)
 			ft_putstr(name);
 			ft_putchar('\n');
 		}
+	}
+	else if (i == 3)
+	{
+		ft_putstr("cd: string not in pwd: ");
+		ft_putstr(name);
+		ft_putchar('\n');
 	}
 }

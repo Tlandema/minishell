@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:03:12 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 01:39:03 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 03:51:58 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 void	ft_cd_builtin(char **tab, t_env *envir)
 {
-	int i;
-	char *buff;
+	int		i;
+	char	*buff;
 
 	buff = ft_strnew(PATH_MAX);
 	i = ft_count_tab(tab);
@@ -32,7 +32,7 @@ void	ft_cd_builtin(char **tab, t_env *envir)
 	}
 	else if (tab[0] && tab[1] && tab[2])
 		ft_cd_2_arg(tab, envir);
-	else if (!tab[1] || ft_strequ(tab[1],"~"))
+	else if (!tab[1] || ft_strequ(tab[1], "~"))
 		chdir("/Users/tlandema");
 	else if (chdir(tab[1]) == -1)
 		ft_puterror(2, tab[1]);
@@ -43,8 +43,8 @@ void	ft_cd_builtin(char **tab, t_env *envir)
 
 void	ft_setenv_builtin(t_env *envir, char *left, char *right, int i)
 {
-	char **tmp;
-	char *str_tmp;
+	char	**tmp;
+	char	*str_tmp;
 
 	if (!left || !right)
 		return ;
@@ -68,15 +68,14 @@ void	ft_setenv_builtin(t_env *envir, char *left, char *right, int i)
 
 void	ft_unsetenv_builtin(t_env *envir, char *del)
 {
-	int i;
-	int j;
-	char **tmp;
-	char *str;
-	char *str_tmp;
+	int		i;
+	int		j;
+	char	**tmp;
+	char	*str;
+	char	*str_tmp;
 
 	i = 0;
 	j = 0;
-	ft_putnbr(ft_check_env(envir, del));
 	if (ft_check_env(envir, del) == 1)
 	{
 		tmp = copy_tab(envir);
@@ -104,8 +103,8 @@ void	ft_unsetenv_builtin(t_env *envir, char *del)
 
 void	ft_echo_builtin(t_env *envir, char **tab)
 {
-	int i;
-	char *str;//deletecasertarien
+	int		i;
+	char	*str;//deletecasertarien
 
 	i = 1;
 	if (ft_strequ(tab[1], "-n"))
