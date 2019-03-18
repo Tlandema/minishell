@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 00:46:03 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 00:49:58 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 14:15:18 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		ft_stristr(const char *haystack, const char *needle)
 {
 	int i;
 	int j;
+
 	if (ft_strcmp(haystack, "") == 0 && ft_strcmp("", needle) == 0)
 		return (0);
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 09:37:36 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/03 15:54:21 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 14:05:11 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ int			get_next_instruction(char **line)
 	static char	*str[4864];
 	char		*buff;
 
-	if ( !line || BUFF_SIZE <= 0
-		   	|| !(buff = ft_strnew(BUFF_SIZE + 1)) || read(0, buff, 0) == -1
+	if (!line || BUFF_SIZE <= 0
+			|| !(buff = ft_strnew(BUFF_SIZE + 1)) || read(0, buff, 0) == -1
 			|| (*str == NULL && !(*str = ft_strnew(0))))
 		return (-1);
 	if (!(reading(str, buff)))

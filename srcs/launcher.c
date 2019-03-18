@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 14:08:04 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 13:39:04 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 14:20:15 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static void	ft_parsing(char **tab, t_env *envir)
 		if (ft_strequ(tab[0], "cd"))
 			ft_cd_builtin(tab, envir);
 		else if (ft_strequ(tab[0], "exit"))
-			exit(0);//dans le builtin de exit tu freera tout avant de exit;
-		else if (ft_strequ(tab[0], "env"))//tu dois gérer tout les parametres possible
+			exit(0);
+		else if (ft_strequ(tab[0], "env"))
 			ft_env_builtin(envir, tab);
 		else if (ft_strequ(tab[0], "setenv"))
 			ft_setenv_builtin(envir, tab[1], tab[2], 0);
@@ -73,13 +73,13 @@ int			main(int argc, char **argv, char **envp)
 	while (1)
 	{
 		ft_print_prompt();
-		get_next_instruction(&str);//ca malloc cette merde donc free STR stp;
-		tab = ft_strsplit(str, ' ');//ca aussi ca malloc alors free TAB stp;
+		get_next_instruction(&str);
+		tab = ft_strsplit(str, ' ');
 		if (tab)
 			ft_parsing(tab, envir);
 		free(str);
 		str = NULL;
 		if (tab)
-		ft_tabdel(ft_count_tab(tab), &tab);
+			ft_tabdel(ft_count_tab(tab), &tab);
 	}
 }

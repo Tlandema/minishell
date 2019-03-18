@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:18:17 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 11:11:46 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 14:17:54 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int			ft_move_dir(t_env *envir, char *str)
 	return (0);
 }
 
-void 		ft_cd_tild(t_env *envir, char *tab)
+void		ft_cd_tild(t_env *envir, char *tab)
 {
 	char *str;
 

@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 18:01:29 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 10:39:30 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 14:31:40 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@
 #include <unistd.h>
 #include <limits.h>
 #include <stdlib.h>
+
+void		ft_unset_helper(char *str, char *str_tmp)
+{
+	ft_strclr(str_tmp);
+	free(str_tmp);
+	str_tmp = NULL;
+	ft_strclr(str);
+	str = NULL;
+}
 
 static char	**ft_fill_environ(char **environ)
 {
@@ -63,7 +72,7 @@ int			ft_check_env(t_env *envir, char *check)
 {
 	int		i;
 	int		j;
-	int 	k;
+	int		k;
 	char	*copy;
 
 	i = 0;

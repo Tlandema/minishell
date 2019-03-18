@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 01:52:49 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 09:03:31 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 14:15:54 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,14 @@
 #include <limits.h>
 #include <stdlib.h>
 
-static int	ft_check_and_exec(char **com_arg, char **paths, t_env *envir)
+static int	ft_exec_helper(char **com_arg, char **paths, t_env *envir)
 {
-	int		i;
 	int		check;
 	char	*str;
+	int		i;
 
 	i = 0;
-	if ((check = access(com_arg[0], X_OK)) == 0)
-	{
-		if (fork() == 0)
-			execve(com_arg[0], com_arg, envir->env);
-		else
-			wait(NULL);
-		return (check);
-	}
+	check = 0;
 	while (paths[i])
 	{
 		str = ft_strnew(PATH_MAX);
@@ -50,6 +43,22 @@ static int	ft_check_and_exec(char **com_arg, char **paths, t_env *envir)
 		free(str);
 		i++;
 	}
+	return (check);
+}
+
+static int	ft_check_and_exec(char **com_arg, char **paths, t_env *envir)
+{
+	int		check;
+
+	if ((check = access(com_arg[0], X_OK)) == 0)
+	{
+		if (fork() == 0)
+			execve(com_arg[0], com_arg, envir->env);
+		else
+			wait(NULL);
+		return (check);
+	}
+	check = ft_exec_helper(com_arg, paths, envir);
 	return (check);
 }
 

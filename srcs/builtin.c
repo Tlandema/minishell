@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:03:12 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 11:40:06 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 14:31:44 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_setenv_builtin(t_env *envir, char *left, char *right, int i)
 	{
 		ft_puterror(5, NULL);
 		return ;
-	}	
+	}
 	str_tmp = ft_strnew(ft_strlen(left) + ft_strlen(right));
 	tmp = copy_tab(envir);
 	ft_tabdel(ft_count_tab(envir->env), &envir->env);
@@ -93,15 +93,8 @@ void	ft_unsetenv_builtin(t_env *envir, char *del)
 			str_tmp = ft_strdup(tmp[i]);
 			str = ft_strrev(&ft_strchr(ft_strrev(tmp[i]), '=')[1]);
 			if (!ft_strequ(del, str))
-			{
-				envir->env[j] = ft_strdup(str_tmp);
-				j++;
-			}
-			ft_strclr(str_tmp);
-			free(str_tmp);
-			str_tmp = NULL;
-			ft_strclr(str);
-			str = NULL;
+				envir->env[j++] = ft_strdup(str_tmp);
+			ft_unset_helper(str, str_tmp);
 			i++;
 		}
 		ft_tabdel(ft_count_tab(tmp), &tmp);
@@ -117,12 +110,10 @@ void	ft_env_builtin(t_env *envir, char **tab)
 void	ft_echo_builtin(t_env *envir, char **tab)
 {
 	int		i;
-	char	*str;//deletecasertarien
 
 	i = 1;
 	if (ft_strequ(tab[1], "-n"))
 		i = 2;
-	str = envir->env[i];
 	while (tab[i])
 	{
 		if (tab[i][0] != '$')
