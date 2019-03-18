@@ -6,7 +6,7 @@
 #    By: tlandema <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 12:04:00 by tlandema          #+#    #+#              #
-#    Updated: 2019/03/06 02:04:43 by tlandema         ###   ########.fr        #
+#    Updated: 2019/03/17 23:29:30 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS =	launcher.c \
 		command.c \
 		environ.c \
 		builtin.c \
+		cd.c \
 		error.c
 
 
