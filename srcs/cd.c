@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:18:17 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 09:10:34 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 11:11:46 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,33 @@
 #include <limits.h>
 #include <stdlib.h>
 
-static void	ft_replace(char *str, char *to_r, char *r_by)
+int			ft_move_dir(t_env *envir, char *str)
+{
+	if (access(str, X_OK) == 0)
+	{
+		ft_strcpy(envir->tmp_pwd, str);
+		ft_strclr(envir->old_pwd);
+		envir->old_pwd = getcwd(envir->old_pwd, PATH_MAX);
+		chdir(envir->tmp_pwd);
+		ft_strclr(envir->tmp_pwd);
+	}
+	else
+		return (-1);
+	return (0);
+}
+
+void 		ft_cd_tild(t_env *envir, char *tab)
+{
+	char *str;
+
+	str = ft_strnew(PATH_MAX);
+	ft_strcpy(str, "/Users/tlandema");
+	ft_strcat(str, &tab[1]);
+	if (ft_move_dir(envir, str) == -1)
+		ft_puterror(2, str);
+}
+
+static void	ft_replace(t_env *envir, char *str, char *to_r, char *r_by)
 {
 	char	*copy;
 	int		j;
@@ -40,7 +66,7 @@ static void	ft_replace(char *str, char *to_r, char *r_by)
 		}
 	while (str[i])
 		copy[j++] = str[i++];
-	if (chdir(copy) == -1)
+	if (ft_move_dir(envir, copy) == -1)
 		ft_puterror(2, copy);
 	free(copy);
 }
@@ -62,7 +88,7 @@ void		ft_cd_2_arg(char **tab, t_env *envir)
 		{
 			tmp = ft_strdup(envir->env[i]);
 			str = &ft_strchr(tmp, '=')[1];
-			ft_replace(str, tab[1], tab[2]);
+			ft_replace(envir, str, tab[1], tab[2]);
 			free(tmp);
 		}
 		else

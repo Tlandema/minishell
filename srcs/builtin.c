@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:03:12 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 09:09:48 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 11:08:31 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,13 @@ void	ft_cd_builtin(char **tab, t_env *envir)
 	}
 	else if (tab[0] && tab[1] && tab[2])
 		ft_cd_2_arg(tab, envir);
-	else if (!tab[1] || ft_strequ(tab[1], "~"))
-		chdir("/Users/tlandema");
-	else if (chdir(tab[1]) == -1)
+	else if (!tab[1])
+		ft_move_dir(envir, "/Users/tlandema");
+	else if (tab[1][0] == '~')
+		ft_cd_tild(envir, tab[1]);
+	else if (ft_strequ(tab[1], "-"))
+		ft_move_dir(envir, envir->old_pwd);
+	else if (ft_move_dir(envir, tab[1]) == -1)
 		ft_puterror(2, tab[1]);
 	ft_unsetenv_builtin(envir, "PWD");
 	ft_setenv_builtin(envir, "PWD", getcwd(buff, PATH_MAX), 0);
