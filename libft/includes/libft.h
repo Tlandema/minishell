@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 17:04:57 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 00:49:18 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 07:00:05 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 
-int					ft_strequ(char const *s1, char const *s);
+int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s, size_t n);
 char				*ft_strnew(size_t size);
 char				*ft_strmap(char const *s, char (*f)(char));

@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 01:52:49 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 03:46:15 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 09:03:31 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,20 @@
 #include <limits.h>
 #include <stdlib.h>
 
-static void	ft_check_and_exec(char **com_arg, char **paths, t_env *envir)
+static int	ft_check_and_exec(char **com_arg, char **paths, t_env *envir)
 {
 	int		i;
+	int		check;
 	char	*str;
 
 	i = 0;
-	if (access(com_arg[0], X_OK) == 0)
+	if ((check = access(com_arg[0], X_OK)) == 0)
 	{
 		if (fork() == 0)
 			execve(com_arg[0], com_arg, envir->env);
 		else
 			wait(NULL);
+		return (check);
 	}
 	while (paths[i])
 	{
@@ -36,16 +38,19 @@ static void	ft_check_and_exec(char **com_arg, char **paths, t_env *envir)
 		ft_strcpy(str, paths[i]);
 		ft_strcat(str, "/");
 		ft_strcat(str, com_arg[0]);
-		if (access(str, X_OK) == 0)
+		if ((check = access(str, X_OK)) == 0)
 		{
 			if (fork() == 0)
 				execve(str, com_arg, envir->env);
 			else
 				wait(NULL);
+			free(str);
+			return (check);
 		}
 		free(str);
 		i++;
 	}
+	return (check);
 }
 
 void		ft_command_parsing(t_env *envir, char **tab)
@@ -66,7 +71,8 @@ void		ft_command_parsing(t_env *envir, char **tab)
 		paths_tmp = ft_strdup(envir->env[i]);
 		paths_str = &ft_strchr(paths_tmp, '=')[1];
 		paths = ft_strsplit(paths_str, ':');
-		ft_check_and_exec(tab, paths, envir);
+		if (ft_check_and_exec(tab, paths, envir) != 0)
+			ft_puterror(4, tab[0]);
 		ft_tabdel(ft_count_tab(paths), &paths);
 		free(paths_tmp);
 	}

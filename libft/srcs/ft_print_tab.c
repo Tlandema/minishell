@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 19:07:03 by tlandema          #+#    #+#             */
-/*   Updated: 2019/01/05 08:35:48 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 08:13:13 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	ft_print_tab(char **tab)
 	int		i;
 
 	i = 0;
-	if (tab == NULL)
-		return ((void)0);
 	while (tab[i])
 		ft_putendl(tab[i++]);
 }

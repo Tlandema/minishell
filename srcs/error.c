@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:17:38 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 02:19:44 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 04:35:38 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,17 @@
 #include <limits.h>
 #include <stdlib.h>
 
-void	ft_puterror(int i, char *name)
+static void	ft_puterror_2(int i, char *name)
+{
+	if (i == 4)
+	{
+		ft_putstr("TomTomshell: command not found: ");
+		ft_putstr(name);
+		ft_putchar('\n');
+	}
+}
+
+void		ft_puterror(int i, char *name)
 {
 	if (i == 1)
 		ft_putstr("cd: too many arguments\n");
@@ -42,4 +52,6 @@ void	ft_puterror(int i, char *name)
 		ft_putstr(name);
 		ft_putchar('\n');
 	}
+	else
+		ft_puterror_2(i, name);
 }

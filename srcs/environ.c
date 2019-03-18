@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 18:01:29 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 03:49:29 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 09:06:30 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,25 +59,24 @@ void		ft_create_environ(char **envp, t_env *envir)
 int			ft_check_env(t_env *envir, char *check)
 {
 	int		i;
+	int		j;
+	int 	k;
 	char	*copy;
 
 	i = 0;
+	j = 0;
+	k = 0;
 	while (envir->env[i])
 	{
 		copy = ft_strdup(envir->env[i]);
 		if (ft_strequ(ft_strrev(&ft_strchr(ft_strrev(copy), '=')[1]), check))
-		{
-			ft_strclr(copy);
-			free(copy);
-			copy = NULL;
-			return (1);
-		}
+			k = 1;
 		ft_strclr(copy);
 		free(copy);
 		copy = NULL;
 		i++;
 	}
-	return (0);
+	return (k);
 }
 
 char		**copy_tab(t_env *envir)

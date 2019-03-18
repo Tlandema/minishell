@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:03:12 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 03:51:58 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 09:09:48 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,12 @@ void	ft_unsetenv_builtin(t_env *envir, char *del)
 		}
 		ft_tabdel(ft_count_tab(tmp), &tmp);
 	}
+}
+
+void	ft_env_builtin(t_env *envir, char **tab)
+{
+	if (!ft_strequ(tab[1], "-i"))
+		ft_print_tab(envir->env);
 }
 
 void	ft_echo_builtin(t_env *envir, char **tab)

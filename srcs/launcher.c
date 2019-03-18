@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 14:08:04 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 03:50:18 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 04:49:24 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	ft_print_prompt(void)
 	char *path;
 
 	path = ft_strnew(PATH_MAX);
-	ft_putstr("mynishell (\033[96m");
+	ft_putstr("TomTomshell (\033[96m");
 	if (ft_strequ(&ft_strrchr(getcwd(path, PATH_MAX), '/')[1], "tlandema"))
 		ft_putstr("~");
 	else
@@ -40,7 +40,7 @@ static void	ft_parsing(char **tab, t_env *envir)
 		else if (ft_strequ(tab[0], "exit"))
 			exit(0);//dans le builtin de exit tu freera tout avant de exit;
 		else if (ft_strequ(tab[0], "env"))//tu dois gérer tout les parametres possible
-			ft_print_tab(envir->env);
+			ft_env_builtin(envir, tab);
 		else if (ft_strequ(tab[0], "setenv"))
 			ft_setenv_builtin(envir, tab[1], tab[2], 0);
 		else if (ft_strequ(tab[0], "unsetenv"))
