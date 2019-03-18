@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:17:38 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 04:35:38 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 11:28:49 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ static void	ft_puterror_2(int i, char *name)
 		ft_putstr("TomTomshell: command not found: ");
 		ft_putstr(name);
 		ft_putchar('\n');
+	}
+	else if (i == 5)
+	{
+		ft_putstr("Usage: \'setenv VAR foo\' will create a environmental vari");
+		ft_putstr("able named VAR=foo. You can't put the sign \'=\' in ");
+		ft_putstr("either the name or the value of the variable.\n");
 	}
 }
 

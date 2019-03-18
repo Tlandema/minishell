@@ -6,13 +6,14 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 14:08:04 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 04:49:24 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 13:39:04 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/includes/libft.h"
 #include "../libft/includes/get_next_line.h"
 #include "../includes/minishell.h"
+#include <signal.h>
 #include <unistd.h>
 #include <limits.h>
 #include <stdlib.h>
@@ -51,6 +52,12 @@ static void	ft_parsing(char **tab, t_env *envir)
 			ft_command_parsing(envir, tab);
 		return ;
 	}
+}
+
+void		signalhandler(int sig_num)
+{
+	ft_putnbr(sig_num);
+	ft_putstr("ca marche");
 }
 
 int			main(int argc, char **argv, char **envp)

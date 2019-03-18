@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:03:12 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 11:08:31 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 11:40:06 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,11 @@ void	ft_setenv_builtin(t_env *envir, char *left, char *right, int i)
 	char	**tmp;
 	char	*str_tmp;
 
-	if (!left || !right)
+	if (!left || !right || strchr(left, '=') || strchr(right, '='))
+	{
+		ft_puterror(5, NULL);
 		return ;
+	}	
 	str_tmp = ft_strnew(ft_strlen(left) + ft_strlen(right));
 	tmp = copy_tab(envir);
 	ft_tabdel(ft_count_tab(envir->env), &envir->env);
@@ -122,7 +125,10 @@ void	ft_echo_builtin(t_env *envir, char **tab)
 	str = envir->env[i];
 	while (tab[i])
 	{
-		ft_putstr(tab[i]);
+		if (tab[i][0] != '$')
+			ft_putstr(tab[i]);
+		else
+			ft_echo_dolss(envir, tab[i]);
 		ft_putchar(' ');
 		i++;
 	}

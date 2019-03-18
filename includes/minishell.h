@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:33:26 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 11:12:34 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/18 11:52:21 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void			ft_cd_2_arg(char **tab, t_env *envir);
 void			ft_cd_tild(t_env *envir, char *tab);
 
 void    		ft_echo_builtin(t_env *envir, char **tab);
+void			ft_echo_dolss(t_env *envir, char *str);
+
 void			ft_setenv_builtin(t_env *env, char *left, char *right, int i);
 void			ft_env_builtin(t_env *envir, char **tab);
 void			ft_unsetenv_builtin(t_env *envir, char *del);
