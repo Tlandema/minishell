@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:03:12 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/19 02:46:52 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/19 08:29:56 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,17 +111,12 @@ void	ft_echo_builtin(t_env *envir, char **tab)
 {
 	int		i;
 
-	i = 1;
-	if (ft_strequ(tab[1], "-n"))
-		i = 2;
-	while (tab[i])
+	if (tab[1])
 	{
-		if (tab[i][0] != '$')
-			ft_putstr(tab[i]);
-		else
-			ft_echo_dolss(envir, tab[i]);
-		ft_putchar(' ');
-		i++;
+		i = 1;
+		if (ft_strequ(tab[1], "-n"))
+			i = 2;
+		ft_echo_helper(envir, &tab[i]);
+		ft_putchar('\n');
 	}
-	ft_putchar('\n');
 }

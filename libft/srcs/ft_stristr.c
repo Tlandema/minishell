@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 00:46:03 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 14:15:18 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/19 08:03:06 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ int		ft_stristr(const char *haystack, const char *needle)
 			return (i);
 		i++;
 	}
-	return (0);
+	return (i);
 }
