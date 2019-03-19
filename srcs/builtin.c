@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:03:12 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 14:31:44 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/19 02:46:52 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_setenv_builtin(t_env *envir, char *left, char *right, int i)
 	char	**tmp;
 	char	*str_tmp;
 
-	if (!left || !right || strchr(left, '=') || strchr(right, '='))
+	if (!left || !right || ft_strchr(left, '=') || ft_strchr(right, '='))
 	{
 		ft_puterror(5, NULL);
 		return ;
