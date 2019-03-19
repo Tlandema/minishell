@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:39:10 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/19 08:30:24 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/19 09:34:24 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,37 +17,46 @@
 #include <limits.h>
 #include <stdlib.h>
 
+static int	ft_echo_helper_2(t_env *envir, char *str, int i)
+{
+	char *tmp;
+
+	tmp = ft_strsub(&str[i], 0, ft_stristr(&str[i], " "));
+	if (tmp[ft_strlen(tmp)] == '"')
+		ft_echo_dolss(envir, ft_strsub(tmp, 0, ft_strlen(tmp) - 1));
+	else
+		ft_echo_dolss(envir, tmp);
+	ft_putstr(tmp);
+	free(tmp);
+	i += ft_stristr(&str[i], " ");
+	return (i);
+}
+
 void	ft_echo_helper(t_env *envir, char **tab)
 {
 	int		i;
 	int		size;
-	char	*tr;
-	char	*tmp;
+	char	*str;
 
 	i = 0;
 	size = 0;
 	while (tab[i])
 		size += ft_strlen(tab[i++]) + 1;
 	i = 0;
-	tr = ft_strnew(size);
-	ft_strcpy(tr, tab[i]);
+	str = ft_strnew(size);
+	ft_strcpy(str, tab[i]);
 	while (tab[++i])
 	{
-		ft_strcat(tr, " ");
-		ft_strcat(tr, tab[i]);
+		ft_strcat(str, " ");
+		ft_strcat(str, tab[i]);
 	}
 	i = -1;
-	while (tr[++i])
+	while (str[++i])
 	{
-		if (tr[i] == '$')
-		{
-			tmp = ft_strsub(&tr[i], 0, ft_stristr(&tr[i], " "));
-			ft_echo_dolss(envir, tmp);
-			free(tmp);
-			i += ft_stristr(&tr[i], " ");
-		}
-		if (tr[i] != '"')
-			ft_putchar(tr[i]);
+		if (str[i] == '$')
+			i = ft_echo_helper_2(envir, str, i);
+		else if (str[i] != '"')
+			ft_putchar(str[i]);
 	}
 }
 
