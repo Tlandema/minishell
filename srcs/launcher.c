@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 14:08:04 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 14:20:15 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/19 17:44:09 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,13 @@ static void	ft_parsing(char **tab, t_env *envir)
 		return ;
 	}
 }
-
 void		signalhandler(int sig_num)
 {
-	ft_putnbr(sig_num);
-	ft_putstr("ca marche");
+	if (sig_num == 2)
+	{
+		ft_putchar('\n');
+		ft_print_prompt();
+	}
 }
 
 int			main(int argc, char **argv, char **envp)
@@ -70,6 +72,7 @@ int			main(int argc, char **argv, char **envp)
 	argv = NULL;
 	envir = (t_env *)ft_memalloc(sizeof(t_env));
 	ft_create_environ(envp, envir);
+	signal(SIGINT, signalhandler);
 	while (1)
 	{
 		ft_print_prompt();
