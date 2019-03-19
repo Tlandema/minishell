@@ -6,11 +6,11 @@
 #    By: tlandema <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 12:04:00 by tlandema          #+#    #+#              #
-#    Updated: 2019/03/18 11:51:57 by tlandema         ###   ########.fr        #
+#    Updated: 2019/03/19 02:43:07 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_minishell
+NAME = minishell
 
 CC = gcc
 
