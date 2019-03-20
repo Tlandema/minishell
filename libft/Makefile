@@ -6,7 +6,7 @@
 #    By: tlandema <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 12:04:00 by tlandema          #+#    #+#              #
-#    Updated: 2019/03/20 11:04:09 by tlandema         ###   ########.fr        #
+#    Updated: 2019/03/20 15:24:22 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS_PATH = srcs
 
 SRCS = get_next_line.c \
 	   ft_stristr.c \
-	   ft_split_whitespaces.c \
+	   ft_split_white.c \
 	   get_next_instruction.c \
 	   ft_strjoinfree.c \
 	   ft_count_tab.c \

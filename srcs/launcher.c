@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 14:08:04 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/20 13:33:20 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/20 16:26:34 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,12 @@ static void	signalhandler(int sig_num)
 		ft_print_prompt();
 	}
 }
-
+#include <stdio.h>
 int			main(int argc, char **argv, char **envp)
 {
 	char	*str;
 	char	**tab;
+	char	**tab_f;
 	t_env	*envir;
 
 	argc = 0;
@@ -79,13 +80,21 @@ int			main(int argc, char **argv, char **envp)
 		if (envir->test == 0)
 			ft_print_prompt();
 		get_next_instruction(&str);
-		tab = ft_split_white(str);
-		envir->test = 0;
-		if (tab)
-			ft_parsing(tab, envir);
-		free(str);
-		str = NULL;
-		if (tab)
-			ft_tabdel(ft_count_tab(tab), &tab);
+		if ((tab_f = ft_strsplit(str, ';')))
+		{
+			while (tab_f[argc])
+			{
+				tab = ft_split_white(tab_f[argc]);
+				envir->test = 0;
+				if (tab)
+					ft_parsing(tab, envir);
+				if (tab)
+					ft_tabdel(ft_count_tab(tab), &tab);
+				argc++;
+			}
+			argc = 0;
+			ft_tabdel(ft_count_tab(tab_f), &tab_f);
+		}
+			ft_strdel(&str);
 	}
 }

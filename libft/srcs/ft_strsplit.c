@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 16:38:43 by tlandema          #+#    #+#             */
-/*   Updated: 2019/02/23 22:53:24 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/20 14:56:14 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,19 @@ static int	ft_tab_size(char const *s, char c)
 	i = 0;
 	bol = 1;
 	tab_size = 0;
-	while (s[i])
+	if (s)
 	{
-		if (s[i] == c)
-			bol = 1;
-		else if (bol == 1)
+		while (s[i])
 		{
-			bol = 0;
-			tab_size++;
+			if (s[i] == c)
+				bol = 1;
+			else if (bol == 1)
+			{
+				bol = 0;
+				tab_size++;
+			}
+			i++;
 		}
-		i++;
 	}
 	return (tab_size);
 }
