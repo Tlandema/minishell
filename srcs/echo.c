@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:39:10 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/19 16:39:12 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/20 08:06:34 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	ft_echo_helper_2(t_env *envir, char *str, int i)
 	return (i);
 }
 
-void	ft_echo_helper(t_env *envir, char **tab)
+void		ft_echo_helper(t_env *envir, char **tab)
 {
 	int		i;
 	int		size;
@@ -63,7 +63,7 @@ void	ft_echo_helper(t_env *envir, char **tab)
 	free(str);
 }
 
-void	ft_echo_dolss(t_env *envir, char *str)
+void		ft_echo_dolss(t_env *envir, char *str)
 {
 	int		i;
 	char	*str_tmp;

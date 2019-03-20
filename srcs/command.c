@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 01:52:49 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/19 16:55:13 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/20 08:04:21 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void		ft_command_parsing(t_env *envir, char **tab)
 	char	**paths;
 
 	i = 0;
+	if (ft_strequ("cat", tab[0]))
+		envir->test = 1;
 	while (envir->env[i]
 			&& !(envir->env[i][0] == 'P' && envir->env[i][1] == 'A'
 				&& envir->env[i][2] == 'T' && envir->env[i][3] == 'H'

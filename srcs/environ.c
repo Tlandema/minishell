@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 18:01:29 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 14:31:40 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/20 07:56:11 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void		ft_create_environ(char **envp, t_env *envir)
 	}
 	else
 		envir->env = ft_fill_environ(envir->env);
+	envir->test = 0;
 	envir->old_pwd = ft_strnew(PATH_MAX);
 	envir->old_pwd = getcwd(envir->old_pwd, PATH_MAX);
 	envir->tmp_pwd = ft_strnew(PATH_MAX);

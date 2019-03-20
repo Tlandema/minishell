@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:33:26 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/19 08:30:12 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/20 07:57:21 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct	s_env
 	char	**env;
 	char	*old_pwd;
 	char	*tmp_pwd;
+	int		test;
 }				t_env;
 
 int				ft_check_env(t_env *envir, char *check);
