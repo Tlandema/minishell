@@ -6,7 +6,7 @@
 #    By: tlandema <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 12:04:00 by tlandema          #+#    #+#              #
-#    Updated: 2019/03/19 02:43:07 by tlandema         ###   ########.fr        #
+#    Updated: 2019/03/20 17:45:19 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ INC = includes
 SRCS_PATH = srcs
 
 SRCS =	launcher.c \
+		git.c \
 		command.c \
 		environ.c \
 		builtin.c \

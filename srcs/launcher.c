@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 14:08:04 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/20 16:26:34 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:28:44 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void	ft_print_prompt(void)
 	else
 		ft_putstr(&ft_strrchr(getcwd(path, PATH_MAX), '/')[1]);
 	ft_putstr("\033[39;49m) ");
+	ft_print_git(path);
 	free(path);
 }
 
@@ -62,7 +63,7 @@ static void	signalhandler(int sig_num)
 		ft_print_prompt();
 	}
 }
-#include <stdio.h>
+
 int			main(int argc, char **argv, char **envp)
 {
 	char	*str;
