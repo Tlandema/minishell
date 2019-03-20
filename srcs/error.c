@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:17:38 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 11:28:49 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/20 08:53:47 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,18 @@ static void	ft_puterror_2(int i, char *name)
 {
 	if (i == 4)
 	{
-		ft_putstr("TomTomshell: command not found: ");
-		ft_putstr(name);
-		ft_putchar('\n');
+		if (!access(name, F_OK) && access(name, X_OK) == -1)
+		{
+			ft_putstr("TomTomshell: permission denied: ");
+			ft_putstr(name);
+			ft_putchar('\n');
+		}
+		else
+		{
+			ft_putstr("TomTomshell: command not found: ");
+			ft_putstr(name);
+			ft_putchar('\n');
+		}
 	}
 	else if (i == 5)
 	{
