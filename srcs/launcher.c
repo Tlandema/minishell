@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 14:08:04 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/20 08:05:44 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/20 10:55:39 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int			main(int argc, char **argv, char **envp)
 		tab = ft_strsplit(str, ' ');
 		envir->test = 0;
 		if (tab)
-			ft_parsing(tab, envir);
+			ft_parsing(index, tab, envir);
 		free(str);
 		str = NULL;
 		if (tab)
