@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 14:08:04 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/22 10:57:51 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/22 16:21:09 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	ft_print_prompt(int r_o_g)
 		ft_putstr(&ft_strrchr(getcwd(path, PATH_MAX), '/')[1]);
 	ft_putstr("\033[39;49m) ");
 	if (ft_strstr(path, "/") && !ft_strequ(path, "/"))
-	ft_print_git(path);
+		ft_print_git(path);
 	free(path);
 }
 
@@ -57,6 +57,7 @@ static void	ft_parsing(char **tab, t_env *envir)
 			ft_echo_builtin(envir, tab);
 		else
 			ft_command_parsing(envir, tab);
+		ft_tabdel(ft_count_tab(tab), &tab);
 		return ;
 	}
 }
@@ -71,6 +72,17 @@ static void	signalhandler(int sig_num)
 	return ;
 }
 
+static int	main_helper(t_env *envir, int argc, char **str)
+{
+	argc = 0;
+	if (envir->cat == 0)
+		ft_print_prompt(envir->r_o_g);
+	envir->r_o_g = 0;
+	envir->cat = 0;
+	get_next_instruction(str);
+	return (argc);
+}
+
 int			main(int argc, char **argv, char **envp)
 {
 	char	*str;
@@ -78,32 +90,23 @@ int			main(int argc, char **argv, char **envp)
 	char	**tab_f;
 	t_env	*envir;
 
-	argc = 0;
-	argv = NULL;
-	envir = (t_env *)ft_memalloc(sizeof(t_env));
-	ft_create_environ(envp, envir);
+	envir = ft_create_environ(envp, argv);
 	signal(SIGINT, signalhandler);
 	while (1)
 	{
-		if (envir->cat == 0)
-			ft_print_prompt(envir->r_o_g);
-		envir->r_o_g = 0;
-		envir->cat = 0;
-		get_next_instruction(&str);
+		argc = main_helper(envir, argc, &str);
 		if ((tab_f = ft_strsplit(str, ';')))
 		{
 			while (tab_f[argc])
 			{
+				envir->r_o_g = 0;
 				tab = ft_split_white(tab_f[argc]);
 				if (tab)
 					ft_parsing(tab, envir);
-				if (tab)
-					ft_tabdel(ft_count_tab(tab), &tab);
 				argc++;
 			}
-			argc = 0;
 			ft_tabdel(ft_count_tab(tab_f), &tab_f);
 		}
-			ft_strdel(&str);
+		ft_strdel(&str);
 	}
 }

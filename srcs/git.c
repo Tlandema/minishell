@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:40:21 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/22 15:09:40 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/22 16:26:05 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ static char	*ft_git_helper(char *tmp_path)
 	return (str);
 }
 
+void		ft_git_helper2(char *tmp_path, char *path)
+{
+	ft_strcpy(tmp_path, path);
+	ft_strcat(tmp_path, "/.git");
+}
+
 void		ft_print_git(char *path)
 {
 	char	*tmp_path;
@@ -40,14 +46,14 @@ void		ft_print_git(char *path)
 	if (ft_strequ(path, "/Users"))
 		return ;
 	tmp_path = ft_strnew(PATH_MAX);
-	ft_strcpy(tmp_path, path);
-	ft_strcat(tmp_path, "/.git");
+	ft_git_helper2(tmp_path, path);
 	if (access(tmp_path, X_OK) == 0)
 	{
 		str = ft_git_helper(tmp_path);
 		if (ft_strstr(str, "ref : refs/heads/"))
 			ft_putstr(ft_strchr(ft_strchr(str, '/'), '/'));
 		ft_putstr("\033[39;49m) ");
+		free(str);
 		free(tmp_path);
 		return ;
 	}
