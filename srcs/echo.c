@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:39:10 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/20 08:06:34 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/22 14:53:02 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_echo_helper_2(t_env *envir, char *str, int i)
 
 	tmp = ft_strsub(&str[i], 0, ft_stristr(&str[i], " "));
 	to_f = NULL;
-	if (tmp[ft_strlen(tmp) - 1] == '"')
+	if (tmp[ft_strlen(tmp) - 1] == '"' || tmp[ft_strlen(tmp) - 1] == '\'')
 		ft_echo_dolss(envir, (to_f = ft_strsub(tmp, 0, ft_strlen(tmp) - 1)));
 	else
 		ft_echo_dolss(envir, tmp);
@@ -57,7 +57,7 @@ void		ft_echo_helper(t_env *envir, char **tab)
 	{
 		if (str[i] == '$')
 			i = ft_echo_helper_2(envir, str, i);
-		else if (str[i] != '"')
+		else if (str[i] != '"' && str[i] != '\'')
 			ft_putchar(str[i]);
 	}
 	free(str);

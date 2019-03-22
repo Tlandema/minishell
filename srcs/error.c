@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:17:38 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/22 10:57:26 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/22 14:57:17 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,24 @@ static void	ft_puterror_2(int i, char *name)
 		if (!access(name, F_OK) && access(name, X_OK) == -1)
 		{
 			ft_putstr("TomTomshell: permission denied: ");
-			ft_putstr(name);
-			ft_putchar('\n');
+			ft_putendl(name);
 		}
 		else
 		{
 			ft_putstr("TomTomshell: command not found: ");
-			ft_putstr(name);
-			ft_putchar('\n');
+			ft_putendl(name);
 		}
 	}
 	else if (i == 5)
 	{
-		ft_putstr("Usage: \'setenv VAR foo\' will create a environmental vari");
-		ft_putstr("able named VAR=foo. You can't put the sign \'=\' in ");
-		ft_putstr("either the name or the value of the variable.\n");
+		ft_putstr("Usage: \'setenv [VAR] [foo]\' will create a environmental ");
+		ft_putstr("variable named VAR=foo. You can't put the sign \'=\' in ");
+		ft_putendl("either the name or the value of the variable.");
+	}
+	else if (i == 6)
+	{
+		ft_putstr("Usage: \'unsetenv [VAR]\' will delete an environmental var");
+		ft_putendl("iable called VAR if it exists.");
 	}
 }
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split_white.c                             :+:      :+:    :+:   */
+/*   ft_split_white.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 14:48:25 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/20 15:24:01 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/22 14:55:12 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 static int	tab_size(char *s)
 {
-	int     tab_size;
-	int     i;
-	int     bol;
+	int		tab_size;
+	int		i;
+	int		bol;
 
 	i = 0;
 	bol = 1;
@@ -63,11 +63,11 @@ static int	*ft_letters(char *s)
 	return (tab_i);
 }
 
-static char **ft_fill_tab(char *s, char **tab)
+static char	**ft_fill_tab(char *s, char **tab)
 {
-	int     i;
-	int     j;
-	int     k;
+	int	i;
+	int	j;
+	int	k;
 
 	i = 0;
 	j = 0;

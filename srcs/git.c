@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:40:21 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/21 14:44:35 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/22 15:09:40 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,25 @@
 #include "../libft/includes/get_next_line.h"
 #include <limits.h>
 
-void	ft_print_git(char *path)
+static char	*ft_git_helper(char *tmp_path)
+{
+	int		fd;
+	char	*str;
+
+	ft_putstr("git:(");
+	ft_strcat(tmp_path, "/HEAD");
+	fd = open(tmp_path, O_RDONLY);
+	get_next_line(fd, &str);
+	close(fd);
+	ft_putstr("\033[31;49m");
+	ft_putstr(&ft_strchr(&ft_strchr(str, '/')[1], '/')[1]);
+	return (str);
+}
+
+void		ft_print_git(char *path)
 {
 	char	*tmp_path;
 	char	*str;
-	int		fd;
 
 	if (ft_strequ(path, "/Users"))
 		return ;
@@ -30,12 +44,7 @@ void	ft_print_git(char *path)
 	ft_strcat(tmp_path, "/.git");
 	if (access(tmp_path, X_OK) == 0)
 	{
-		ft_putstr("git:(");
-		ft_strcat(tmp_path, "/HEAD");
-		fd = open(tmp_path, O_RDONLY);
-		get_next_line(fd, &str);
-		ft_putstr("\033[31;49m");
-		ft_putstr(&ft_strchr(&ft_strchr(str, '/')[1], '/')[1]);
+		str = ft_git_helper(tmp_path);
 		if (ft_strstr(str, "ref : refs/heads/"))
 			ft_putstr(ft_strchr(ft_strchr(str, '/'), '/'));
 		ft_putstr("\033[39;49m) ");

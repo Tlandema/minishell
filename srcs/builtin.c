@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:03:12 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/22 10:56:01 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/22 14:45:41 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,24 +81,25 @@ void	ft_unsetenv_builtin(t_env *envir, char *del)
 	char	*str;
 	char	*str_tmp;
 
-	i = 0;
+	i = -1;
 	j = 0;
 	if (ft_check_env(envir, del) == 1)
 	{
 		tmp = copy_tab(envir);
 		ft_tabdel(ft_count_tab(envir->env), &envir->env);
 		envir->env = (char **)ft_memalloc(sizeof(char *) * (ft_count_tab(tmp)));
-		while (tmp[i])
+		while (tmp[++i])
 		{
 			str_tmp = ft_strdup(tmp[i]);
 			str = ft_strrev(&ft_strchr(ft_strrev(tmp[i]), '=')[1]);
 			if (!ft_strequ(del, str))
 				envir->env[j++] = ft_strdup(str_tmp);
 			ft_unset_helper(str, str_tmp);
-			i++;
 		}
 		ft_tabdel(ft_count_tab(tmp), &tmp);
 	}
+	else
+		ft_puterror(6, NULL, envir);
 }
 
 void	ft_env_builtin(t_env *envir, char **tab)
