@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:18:17 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 14:17:54 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/22 10:56:55 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		ft_cd_tild(t_env *envir, char *tab)
 	ft_strcpy(str, "/Users/tlandema");
 	ft_strcat(str, &tab[1]);
 	if (ft_move_dir(envir, str) == -1)
-		ft_puterror(2, str);
+		ft_puterror(2, str, envir);
 }
 
 static void	ft_replace(t_env *envir, char *str, char *to_r, char *r_by)
@@ -67,7 +67,7 @@ static void	ft_replace(t_env *envir, char *str, char *to_r, char *r_by)
 	while (str[i])
 		copy[j++] = str[i++];
 	if (ft_move_dir(envir, copy) == -1)
-		ft_puterror(2, copy);
+		ft_puterror(2, copy, envir);
 	free(copy);
 }
 
@@ -92,6 +92,6 @@ void		ft_cd_2_arg(char **tab, t_env *envir)
 			free(tmp);
 		}
 		else
-			ft_puterror(3, tab[1]);
+			ft_puterror(3, tab[1], envir);
 	}
 }

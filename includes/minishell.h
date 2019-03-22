@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:33:26 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/20 18:29:08 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/22 10:54:33 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ typedef struct	s_env
 	char	**env;
 	char	*old_pwd;
 	char	*tmp_pwd;
-	int		test;
+	int		cat;
+	int		r_o_g;
 }				t_env;
 
 int				ft_check_env(t_env *envir, char *check);
 void			ft_print_git(char *path);
-void			ft_puterror(int i, char *name);
+void			ft_puterror(int i, char *name, t_env *envir);
 void			ft_create_environ(char **envp, t_env *envir);
 char			**copy_tab(t_env *envir);
 

@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:17:38 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/20 08:53:47 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/22 10:57:26 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,19 @@ static void	ft_puterror_2(int i, char *name)
 	}
 }
 
-void		ft_puterror(int i, char *name)
+void		ft_puterror(int i, char *name, t_env *envir)
 {
+	envir->r_o_g = 1;
 	if (i == 1)
 		ft_putstr("cd: too many arguments\n");
 	else if (i == 2)
 	{
 		if (!access(name, F_OK) && access(name, X_OK) == -1)
-		{
 			ft_putstr("cd: permission denied: ");
-			ft_putstr(name);
-			ft_putchar('\n');
-		}
 		else
-		{
 			ft_putstr("cd: no such file or directory: ");
-			ft_putstr(name);
-			ft_putchar('\n');
-		}
+		ft_putstr(name);
+		ft_putchar('\n');
 	}
 	else if (i == 3)
 	{

@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:03:12 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/19 08:29:56 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/22 10:56:01 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_cd_builtin(char **tab, t_env *envir)
 	i = ft_count_tab(tab);
 	if (i > 3)
 	{
-		ft_puterror(1, NULL);
+		ft_puterror(1, NULL, envir);
 		if (tab[3])
 			ft_putstr(tab[3]);
 	}
@@ -39,7 +39,7 @@ void	ft_cd_builtin(char **tab, t_env *envir)
 	else if (ft_strequ(tab[1], "-"))
 		ft_move_dir(envir, envir->old_pwd);
 	else if (ft_move_dir(envir, tab[1]) == -1)
-		ft_puterror(2, tab[1]);
+		ft_puterror(2, tab[1], envir);
 	ft_unsetenv_builtin(envir, "PWD");
 	ft_setenv_builtin(envir, "PWD", getcwd(buff, PATH_MAX), 0);
 	free(buff);
@@ -52,7 +52,7 @@ void	ft_setenv_builtin(t_env *envir, char *left, char *right, int i)
 
 	if (!left || !right || ft_strchr(left, '=') || ft_strchr(right, '='))
 	{
-		ft_puterror(5, NULL);
+		ft_puterror(5, NULL, envir);
 		return ;
 	}
 	str_tmp = ft_strnew(ft_strlen(left) + ft_strlen(right));

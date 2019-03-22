@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 14:08:04 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/21 17:40:27 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/22 10:57:51 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,17 @@
 #include <limits.h>
 #include <stdlib.h>
 
-static void	ft_print_prompt(void)
+static void	ft_print_prompt(int r_o_g)
 {
 	char *path;
 
 	path = ft_strnew(PATH_MAX);
-	ft_putstr("Tsh (\033[96m");
+	if (r_o_g)
+		ft_putstr("\033[91m");
+	else
+		ft_putstr("\033[92m");
+	ft_putstr("Tsh ");
+	ft_putstr("\033[39m(\033[96m");
 	if (ft_strequ(&ft_strrchr(getcwd(path, PATH_MAX), '/')[1], "tlandema"))
 		ft_putstr("~");
 	else
@@ -61,7 +66,7 @@ static void	signalhandler(int sig_num)
 	if (sig_num == 2)
 	{
 		ft_putchar('\n');
-		ft_print_prompt();
+		ft_print_prompt(1);
 	}
 	return ;
 }
@@ -80,9 +85,10 @@ int			main(int argc, char **argv, char **envp)
 	signal(SIGINT, signalhandler);
 	while (1)
 	{
-		if (envir->test == 0)
-			ft_print_prompt();
-		envir->test = 0;
+		if (envir->cat == 0)
+			ft_print_prompt(envir->r_o_g);
+		envir->r_o_g = 0;
+		envir->cat = 0;
 		get_next_instruction(&str);
 		if ((tab_f = ft_strsplit(str, ';')))
 		{

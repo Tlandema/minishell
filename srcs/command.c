@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 01:52:49 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/21 17:49:41 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/22 10:55:27 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void		ft_command_parsing(t_env *envir, char **tab)
 
 	i = 0;
 	if (ft_strequ("cat", tab[0]) && tab[1] == NULL)
-		envir->test = 1;
+		envir->cat = 1;
 	while (envir->env[i]
 			&& !(envir->env[i][0] == 'P' && envir->env[i][1] == 'A'
 				&& envir->env[i][2] == 'T' && envir->env[i][3] == 'H'
@@ -83,7 +83,7 @@ void		ft_command_parsing(t_env *envir, char **tab)
 		paths_str = &ft_strchr(paths_tmp, '=')[1];
 		paths = ft_strsplit(paths_str, ':');
 		if (ft_check_and_exec(tab, paths, envir) != 0)
-			ft_puterror(4, tab[0]);
+			ft_puterror(4, tab[0], envir);
 		ft_tabdel(ft_count_tab(paths), &paths);
 		free(paths_tmp);
 	}
