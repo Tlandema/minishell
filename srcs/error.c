@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:17:38 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/22 14:57:17 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/01 00:58:59 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,17 @@
 #include <unistd.h>
 #include <limits.h>
 #include <stdlib.h>
+
+void		ft_free(char **tab_f, char **tab, t_env *envir, char *str)
+{
+	free(envir->old_pwd);
+	free(envir->tmp_pwd);
+	ft_tabdel(ft_count_tab(envir->env), &envir->env);
+	free(envir);
+	ft_strdel(&str);
+	ft_tabdel(ft_count_tab(tab), &tab);
+	ft_tabdel(ft_count_tab(tab_f), &tab_f);
+}
 
 static void	ft_puterror_2(int i, char *name)
 {

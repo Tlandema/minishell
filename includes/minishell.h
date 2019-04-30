@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:33:26 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/22 16:00:14 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/01 00:59:31 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,7 @@ void			ft_unset_helper(char *str, char *str_tmp);
 int				ft_move_dir(t_env *envir, char *str);
 
 void			ft_command_parsing(t_env *envir, char **tab);
+
+void			ft_free(char **tab_f, char **tab, t_env *env, char *str);
 
 #endif

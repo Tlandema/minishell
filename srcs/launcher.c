@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 14:08:04 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/22 16:21:09 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/01 00:59:53 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,17 @@ static void	ft_print_prompt(int r_o_g)
 	free(path);
 }
 
-static void	ft_parsing(char **tab, t_env *envir)
+static void	ft_parsing(char **tab_f, char **tab, t_env *envir, char *str)
 {
 	if (tab)
 	{
 		if (ft_strequ(tab[0], "cd"))
 			ft_cd_builtin(tab, envir);
 		else if (ft_strequ(tab[0], "exit"))
+		{
+			ft_free(tab_f, tab, envir, str);
 			exit(0);
+		}
 		else if (ft_strequ(tab[0], "env"))
 			ft_env_builtin(envir, tab);
 		else if (ft_strequ(tab[0], "setenv"))
@@ -102,7 +105,7 @@ int			main(int argc, char **argv, char **envp)
 				envir->r_o_g = 0;
 				tab = ft_split_white(tab_f[argc]);
 				if (tab)
-					ft_parsing(tab, envir);
+					ft_parsing(tab_f, tab, envir, str);
 				argc++;
 			}
 			ft_tabdel(ft_count_tab(tab_f), &tab_f);

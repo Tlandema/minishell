@@ -6,7 +6,7 @@
 #    By: tlandema <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 12:04:00 by tlandema          #+#    #+#              #
-#    Updated: 2019/03/20 17:45:19 by tlandema         ###   ########.fr        #
+#    Updated: 2019/04/30 08:12:38 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = minishell
 
 CC = gcc
 
-CFLAGS = -g -g3 -Wall -Wextra -Werror
+CFLAGS = -g3 -Wall -Wextra -Werror
 
 LIB = libft.a
 

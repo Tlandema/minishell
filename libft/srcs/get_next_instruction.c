@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 09:37:36 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/18 14:05:11 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/01 00:54:00 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,8 @@ static char	*a_line(char **str)
 	}
 	else if (!(line = ft_strdup(*str)))
 		return (NULL);
-	if (!(*str) || !truc)
-	{
-		free(*str);
-		*str = NULL;
-	}
+	free(*str);
+	*str = NULL;
 	return (line);
 }
 
