@@ -1,22 +1,17 @@
-/* ************************************************************************** */
-/*                                                                            */
+
 /*                                                        :::      ::::::::   */
 /*   launcher.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 14:08:04 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/01 00:59:53 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/02 06:07:31 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/includes/libft.h"
 #include "../libft/includes/get_next_line.h"
 #include "../includes/minishell.h"
-#include <signal.h>
-#include <unistd.h>
-#include <limits.h>
-#include <stdlib.h>
 
 static void	ft_print_prompt(int r_o_g)
 {
@@ -77,12 +72,15 @@ static void	signalhandler(int sig_num)
 
 static int	main_helper(t_env *envir, int argc, char **str)
 {
+	*str = ft_strnew(PATH_MAX);
 	argc = 0;
 	if (envir->cat == 0)
 		ft_print_prompt(envir->r_o_g);
 	envir->r_o_g = 0;
 	envir->cat = 0;
-	get_next_instruction(str);
+	ft_init_term();
+	ft_loop(str);//get_next_instruction(str);
+	ft_reset_term();
 	return (argc);
 }
 

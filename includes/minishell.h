@@ -6,12 +6,19 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:33:26 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/01 00:59:31 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/02 10:03:02 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+
+# include <signal.h>
+# include <unistd.h>
+# include <limits.h>
+# include <stdlib.h>
+# include <termios.h>
+# include <termcap.h>
 
 typedef struct	s_env
 {
@@ -21,6 +28,26 @@ typedef struct	s_env
 	int		cat;
 	int		r_o_g;
 }				t_env;
+
+typedef struct	s_cur
+{
+	int		start_row;
+	int		start_col;
+	int		pos;
+	int		length;
+}				t_cur;
+
+int				ft_printest(int yes);
+void			ft_init_term(void);
+void			ft_reset_term(void);
+void			ft_loop(char **str);
+
+void			ft_ins_char(t_cur *cur, char *str, char key);
+void			ft_del_char(t_cur *cur, char **str);
+
+void    		ft_cur_start_pos(t_cur *cur);
+void			ft_cur_left(t_cur *cur);
+void			ft_cur_right(t_cur *cur);
 
 int				ft_check_env(t_env *envir, char *check);
 void			ft_print_git(char *path);

@@ -6,16 +6,13 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:39:10 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/22 14:53:02 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/02 00:53:05 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/includes/libft.h"
 #include "../libft/includes/get_next_line.h"
 #include "../includes/minishell.h"
-#include <unistd.h>
-#include <limits.h>
-#include <stdlib.h>
 
 static int	ft_echo_helper_2(t_env *envir, char *str, int i)
 {

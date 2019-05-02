@@ -6,16 +6,13 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 01:52:49 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/01 01:01:37 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/02 00:52:57 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/includes/libft.h"
 #include "../libft/includes/get_next_line.h"
 #include "../includes/minishell.h"
-#include <unistd.h>
-#include <limits.h>
-#include <stdlib.h>
 
 static int	ft_exec_helper(char **com_arg, char **paths, t_env *envir)
 {

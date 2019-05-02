@@ -6,16 +6,13 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:18:17 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/22 10:56:55 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/02 00:52:51 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/includes/libft.h"
 #include "../libft/includes/get_next_line.h"
 #include "../includes/minishell.h"
-#include <unistd.h>
-#include <limits.h>
-#include <stdlib.h>
 
 int			ft_move_dir(t_env *envir, char *str)
 {

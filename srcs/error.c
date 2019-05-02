@@ -6,16 +6,13 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:17:38 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/01 00:58:59 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/02 00:53:18 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/includes/libft.h"
 #include "../libft/includes/get_next_line.h"
 #include "../includes/minishell.h"
-#include <unistd.h>
-#include <limits.h>
-#include <stdlib.h>
 
 void		ft_free(char **tab_f, char **tab, t_env *envir, char *str)
 {

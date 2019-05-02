@@ -6,16 +6,13 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:03:12 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/22 14:45:41 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/02 00:52:46 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/includes/libft.h"
 #include "../libft/includes/get_next_line.h"
 #include "../includes/minishell.h"
-#include <unistd.h>
-#include <limits.h>
-#include <stdlib.h>
 
 void	ft_cd_builtin(char **tab, t_env *envir)
 {

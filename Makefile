@@ -6,7 +6,7 @@
 #    By: tlandema <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 12:04:00 by tlandema          #+#    #+#              #
-#    Updated: 2019/04/30 08:12:38 by tlandema         ###   ########.fr        #
+#    Updated: 2019/05/02 14:11:54 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,16 @@ SRCS_PATH = srcs
 
 SRCS =	launcher.c \
 		git.c \
+		line_editor.c \
+		memoline.c \
+		term.c \
+		cursor.c \
 		command.c \
 		environ.c \
 		builtin.c \
 		echo.c \
 		cd.c \
 		error.c
-
 
 OBJS_PATH = obj
 
@@ -71,7 +74,7 @@ COM_STRING   = "Compiling"
 all: $(NAME)
 
 $(NAME): $(INC) $(D_OBJS) lib
-	@$(call run_and_test, $(CC) $(CFLAGS) -o $(NAME) -I$(INC) $(D_OBJS) -L./$(LIB_PATH) -lft)
+	@$(call run_and_test, $(CC) $(CFLAGS) -ltermcap -o $(NAME) -I$(INC) $(D_OBJS) -L./$(LIB_PATH) -lft)
 
 $(OBJS_PATH)/%.o: $(SRCS_PATH)/%.c
 	@$(call run_and_test, $(CC) $(CFLAGS) -o $@ -c $< -I$(LIB_PATH))

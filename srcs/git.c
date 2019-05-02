@@ -6,16 +6,14 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:40:21 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/22 16:26:05 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/02 00:53:51 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
 #include <fcntl.h>
 #include "../libft/includes/libft.h"
 #include "../libft/includes/get_next_line.h"
-#include <limits.h>
+#include "../includes/minishell.h"
 
 static char	*ft_git_helper(char *tmp_path)
 {
