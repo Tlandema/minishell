@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:33:26 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/02 10:03:02 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/03 10:22:07 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ void			ft_loop(char **str);
 void			ft_ins_char(t_cur *cur, char *str, char key);
 void			ft_del_char(t_cur *cur, char **str);
 
-void    		ft_cur_start_pos(t_cur *cur);
+void			ft_autocomplete(char *str, t_cur *cur);
+
+void			ft_cur_start_pos(t_cur *cur);
 void			ft_cur_left(t_cur *cur);
 void			ft_cur_right(t_cur *cur);
 

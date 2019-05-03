@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 02:02:54 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/02 13:49:08 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/03 10:25:52 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 #include "../includes/minishell.h"
 #include <sys/ioctl.h>
 
-static int         col_number(void)
+static int	col_number(void)
 {
-	struct winsize  w;
+	struct winsize	w;
 
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 	return (w.ws_col);
 }
 
-int ft_printest(int yes)
+int			ft_printest(int yes)
 {
 	ft_putchar_fd((char)yes, STDERR_FILENO);
 	return (0);
@@ -39,6 +39,8 @@ static int	ft_key_press(long key, char **str, t_cur *cur)
 		ft_cur_left(cur);
 	else if (key == 127 && cur->length != 0)
 		ft_del_char(cur, str);
+	else if (key == 9)
+		ft_autocomplete(*str, cur);
 	else if (key == 10)
 		return (1);
 	return (0);
@@ -48,12 +50,12 @@ void		ft_loop(char **str)
 {
 	long	key;
 	t_cur	*cur;
-	int i;
+	int		i;
 
 	i = 0;
 	cur = (t_cur *)ft_memalloc(sizeof(t_cur));
 	ft_cur_start_pos(cur);
-	while(1)
+	while (1)
 	{
 		key = 0;
 		read(0, &key, 8);

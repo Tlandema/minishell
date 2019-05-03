@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 00:47:52 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/02 10:20:38 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/03 10:24:21 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include "../libft/includes/get_next_line.h"
 #include "../includes/minishell.h"
 
-void    ft_reset_term(void)
+void	ft_reset_term(void)
 {
-	struct termios  tattr;
+	struct termios	tattr;
 
 	tcgetattr(STDIN_FILENO, &tattr);
 	tattr.c_lflag |= (ECHO | ICANON);
@@ -24,9 +24,9 @@ void    ft_reset_term(void)
 	tcsetattr(STDIN_FILENO, TCSANOW, &tattr);
 }
 
-void    ft_init_term(void)
+void	ft_init_term(void)
 {
-	struct termios  tattr;
+	struct termios	tattr;
 
 	tcgetattr(STDIN_FILENO, &tattr);
 	tattr.c_lflag &= ~(ICANON | ECHO);

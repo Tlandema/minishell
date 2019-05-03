@@ -6,7 +6,7 @@
 #    By: tlandema <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 12:04:00 by tlandema          #+#    #+#              #
-#    Updated: 2019/05/02 14:11:54 by tlandema         ###   ########.fr        #
+#    Updated: 2019/05/02 16:52:09 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS =	launcher.c \
 		git.c \
 		line_editor.c \
 		memoline.c \
+		autocomplete.c \
 		term.c \
 		cursor.c \
 		command.c \

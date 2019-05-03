@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 08:22:50 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/02 10:45:51 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/03 10:24:34 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_ins_char(t_cur *cur, char *str, char key)
 	if (cur->length >= PATH_MAX - 1)
 		return ;
 	ft_memmove(str + cur->pos + 1, str + cur->pos, PATH_MAX - cur->pos - 1);
-	str[cur->pos] = key; 
+	str[cur->pos] = key;
 	tputs(tgetstr("im", NULL), 1, ft_printest);
 	ft_putchar_fd(key, 0);
 	tputs(tgetstr("ei", NULL), 1, ft_printest);

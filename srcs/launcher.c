@@ -1,11 +1,12 @@
-
+/* ************************************************************************** */
+/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   launcher.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 14:08:04 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/02 06:07:31 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/03 10:26:45 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +80,7 @@ static int	main_helper(t_env *envir, int argc, char **str)
 	envir->r_o_g = 0;
 	envir->cat = 0;
 	ft_init_term();
-	ft_loop(str);//get_next_instruction(str);
+	ft_loop(str);
 	ft_reset_term();
 	return (argc);
 }
