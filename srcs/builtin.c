@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:03:12 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/02 00:52:46 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/03 13:56:25 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,11 @@ void	ft_echo_builtin(t_env *envir, char **tab)
 	if (tab[1])
 	{
 		i = 1;
+		if (ft_strequ(tab[1], "~"))
+		{
+			ft_putstr("/Users/tlandema\n");
+			return ;
+		}
 		if (ft_strequ(tab[1], "-n"))
 			i = 2;
 		ft_echo_helper(envir, &tab[i]);
