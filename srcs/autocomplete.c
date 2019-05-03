@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 16:44:29 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/03 10:43:45 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/03 13:35:21 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ static int	ft_open_dir(char *to_match, char *dir_name, char **to_give)
 		if (!ft_strncmp(dp->d_name, to_match, len))
 		{
 			if (*to_give != NULL)
-			{
-				free(*to_give);
 				return (0);
-			}
 			*to_give = ft_strdup(&dp->d_name[len]);
 		}
 	}
