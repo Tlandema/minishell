@@ -6,7 +6,7 @@
 #    By: tlandema <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 12:04:00 by tlandema          #+#    #+#              #
-#    Updated: 2019/05/02 16:52:09 by tlandema         ###   ########.fr        #
+#    Updated: 2019/05/08 16:30:04 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = minishell
 
 CC = gcc
 
-CFLAGS = -g3 -Wall -Wextra -Werror
+CFLAGS = -g3 -Wall -Wextra -Werror 
 
 LIB = libft.a
 
@@ -28,6 +28,7 @@ SRCS =	launcher.c \
 		git.c \
 		line_editor.c \
 		memoline.c \
+		the_tab.c \
 		autocomplete.c \
 		term.c \
 		cursor.c \

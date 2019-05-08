@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:33:26 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/03 10:22:07 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/08 16:30:46 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct	s_cur
 	int		pos;
 	int		length;
 }				t_cur;
+
+char			**ft_the_tab(char *str);
 
 int				ft_printest(int yes);
 void			ft_init_term(void);
@@ -70,6 +72,7 @@ void			ft_env_builtin(t_env *envir, char **tab);
 void			ft_unsetenv_builtin(t_env *envir, char *del);
 void			ft_unset_helper(char *str, char *str_tmp);
 int				ft_move_dir(t_env *envir, char *str);
+int				col_number(void);
 
 void			ft_command_parsing(t_env *envir, char **tab);
 

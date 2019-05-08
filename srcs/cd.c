@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:18:17 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/02 00:52:51 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/03 15:59:37 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void		ft_cd_tild(t_env *envir, char *tab)
 	ft_strcat(str, &tab[1]);
 	if (ft_move_dir(envir, str) == -1)
 		ft_puterror(2, str, envir);
+	free(str);
 }
 
 static void	ft_replace(t_env *envir, char *str, char *to_r, char *r_by)

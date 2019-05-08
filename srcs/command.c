@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 01:52:49 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/02 00:52:57 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/03 15:43:27 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	ft_exec_helper(char **com_arg, char **paths, t_env *envir)
 			if (fork() == 0)
 				execve(str, com_arg, envir->env);
 			else
-				wait(NULL);
+				wait(0);
 			free(str);
 			return (check);
 		}
@@ -52,7 +52,7 @@ static int	ft_check_and_exec(char **com_arg, char **paths, t_env *envir)
 		if (fork() == 0)
 			execve(com_arg[0], com_arg, envir->env);
 		else
-			wait(NULL);
+			wait(0);
 		return (check);
 	}
 	check = ft_exec_helper(com_arg, paths, envir);

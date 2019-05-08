@@ -6,7 +6,7 @@
 #    By: tlandema <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 12:04:00 by tlandema          #+#    #+#              #
-#    Updated: 2019/03/20 15:24:22 by tlandema         ###   ########.fr        #
+#    Updated: 2019/05/08 19:13:59 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libft.a
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g3 -Wall -Wextra -Werror
 
 INC = includes
 
@@ -22,7 +22,9 @@ SRCS_PATH = srcs
 
 SRCS = get_next_line.c \
 	   ft_stristr.c \
+	   ft_last_char.c \
 	   ft_split_white.c \
+	   ft_join_tab.c \
 	   get_next_instruction.c \
 	   ft_strjoinfree.c \
 	   ft_count_tab.c \
@@ -86,6 +88,7 @@ SRCS = get_next_line.c \
 	   ft_strsub.c \
 	   ft_strjoin.c \
 	   ft_strtrim.c \
+	   ft_strtrim_char.c \
 	   ft_strsplit.c \
 	   ft_itoa.c \
 	   ft_putchar.c \

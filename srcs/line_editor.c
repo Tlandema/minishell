@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 02:02:54 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/03 10:25:52 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/08 13:14:41 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "../includes/minishell.h"
 #include <sys/ioctl.h>
 
-static int	col_number(void)
+int			col_number(void)
 {
 	struct winsize	w;
 

@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 16:44:29 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/03 13:35:21 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/08 19:22:56 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void		ft_autocomplete(char *str, t_cur *cur)
 	char	*to_match;
 	int		i;
 
+	if (cur->pos != cur->length || ft_last_char(str) == ' ')
+		return ;
 	i = -1;
 	paths = ft_paths_filler(&tmp);
 	if (ft_strrchr(str, ' '))
@@ -95,7 +97,7 @@ void		ft_autocomplete(char *str, t_cur *cur)
 		while (paths[++i])
 		{
 			if (!ft_open_dir(to_match, paths[i], &tmp))
-				break ;
+				return ;
 		}
 	}
 	ft_auto_helper(cur, str, tmp, to_match);
