@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:40:21 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/02 00:53:51 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/11 17:24:37 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		ft_print_git(char *path)
 	char	*tmp_path;
 	char	*str;
 
-	if (ft_strequ(path, "/Users"))
+	if (path[0] == '\0')
 		return ;
 	tmp_path = ft_strnew(PATH_MAX);
 	ft_git_helper2(tmp_path, path);

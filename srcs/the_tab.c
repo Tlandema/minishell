@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 14:10:25 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/08 20:19:50 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/12 04:55:50 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #include "../libft/includes/get_next_line.h"
 #include "../includes/minishell.h"
 
-static int  ft_count_words(char *s)
+static int	ft_count_words(char *s)
 {
-	int     tab_size;
-	int     i;
-	int     bol;
+	int		tab_size;
+	int		i;
+	int		bol;
 
 	i = 0;
 	bol = 1;
@@ -62,7 +62,7 @@ static int	ft_count_args(char **tab, int bole)
 			i++;
 		}
 	}
-	return (i);
+	return (count);
 }
 
 static int	ft_how_many_quote(char *str)
@@ -81,29 +81,28 @@ static int	ft_how_many_quote(char *str)
 	return (j);
 }
 
-static void	ft_fill_the_tab(char **final_tab, char **tmp_tab, int bole)
+static void	ft_fill_the_tab(char **fin_tab, char **tp_tab, int bole)
 {
-	int 	i;
-	int 	j;
+	int		i;
+	int		j;
 	char	**tmp_tab2;
 
 	i = 0;
 	j = 0;
 	if (bole == 1)
 	{
-		final_tab[0] = ft_strdup(tmp_tab[0]);
+		fin_tab[0] = ft_strdup(tp_tab[0]);
 		j = 1;
 		i = 1;
 	}
-	while (tmp_tab[i])
+	while (tp_tab[i])
 	{
-		tmp_tab2 = ft_split_white(tmp_tab[i]);
-		j = ft_join_tab(final_tab, tmp_tab2, j);
+		tmp_tab2 = ft_split_white(tp_tab[i]);
+		j = ft_join_tab(fin_tab, tmp_tab2, j);
 		ft_tabdel(ft_count_tab(tmp_tab2), &tmp_tab2);
-		i++;
-		if (tmp_tab[i])
+		if (tp_tab[++i])
 		{
-			final_tab[j] = ft_strdup(tmp_tab[i]);
+			fin_tab[j] = ft_strdup(tp_tab[i]);
 			j++;
 			i++;
 		}
@@ -114,7 +113,7 @@ char		**ft_the_tab(char *str)
 {
 	char	**first_tab;
 	int		arg_num;
-	int 	bole;
+	int		bole;
 	char	**last_tab;
 
 	last_tab = NULL;
@@ -123,13 +122,15 @@ char		**ft_the_tab(char *str)
 	arg_num = 0;
 	while (str[arg_num] == ' ')
 		arg_num++;
+	if (str[arg_num] == '\0')
+		return (NULL);
 	bole = (str[arg_num] == '"') ? 1 : 0;
 	first_tab = ft_strsplit(str, '"');
 	arg_num = ft_count_args(first_tab, bole);
-	if (!(last_tab = (char **)ft_memalloc(sizeof(char *) * (arg_num + 2))))
+	if (!(last_tab = (char **)ft_memalloc(sizeof(char *) * (arg_num + 1))))
 		return (NULL);
 	ft_fill_the_tab(last_tab, first_tab, bole);
-	last_tab[arg_num + 1] = NULL;
+	last_tab[arg_num] = NULL;
 	ft_tabdel(ft_count_tab(first_tab), &first_tab);
 	return (last_tab);
 }

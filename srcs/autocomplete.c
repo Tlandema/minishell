@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 16:44:29 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/08 19:22:56 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/12 05:14:16 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ static void	ft_more_than_one_com(char *to_match, char **tmp)
 
 	buf = ft_strnew(PATH_MAX);
 	ft_open_dir(to_match, getcwd(buf, PATH_MAX), tmp);
+	if (tmp == NULL)
+		free(to_match);
 	free(buf);
 }
 
@@ -97,7 +99,7 @@ void		ft_autocomplete(char *str, t_cur *cur)
 		while (paths[++i])
 		{
 			if (!ft_open_dir(to_match, paths[i], &tmp))
-				return ;
+				return (ft_small_free(to_match, paths, tmp));
 		}
 	}
 	ft_auto_helper(cur, str, tmp, to_match);

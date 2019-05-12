@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 14:08:04 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/08 17:56:54 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/12 02:21:09 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,10 @@ static void	ft_parsing(char **tab_f, char **tab, t_env *envir, char *str)
 	}
 }
 
-void	signalhandler(int sig_num)
+void		signalhandler(int sig_num)
 {
 	int i;
-	int j;
 
-	j = col_number();
 	i = 0;
 	if (sig_num == 2)
 	{
@@ -110,7 +108,6 @@ int			main(int argc, char **argv, char **envp)
 			{
 				envir->r_o_g = 0;
 				tab = ft_the_tab(tab_f[argc]);
-					//ft_split_white(tab_f[argc]);
 				if (tab)
 					ft_parsing(tab_f, tab, envir, str);
 				argc++;

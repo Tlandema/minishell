@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 14:48:25 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/08 10:47:06 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/09 17:34:03 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 #include "libft.h"
 
-static char     *count_dup(char **s_ptr)
+static char	*count_dup(char **s_ptr)
 {
-	size_t  nb_l;
-	size_t  i;
-	char    *dup;
+	size_t	nb_l;
+	size_t	i;
+	char	*dup;
 
 	while (**s_ptr && **s_ptr == ' ')
 		*s_ptr = *s_ptr + 1;
@@ -39,12 +39,12 @@ static char     *count_dup(char **s_ptr)
 	return (dup);
 }
 
-char            **ft_split_white(char *s)
+char		**ft_split_white(char *s)
 {
-	size_t  i;
-	size_t  word_n;
-	char    **s_tab;
-	char    **s_ptr;
+	size_t	i;
+	size_t	word_n;
+	char	**s_tab;
+	char	**s_ptr;
 
 	if (!s)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:17:38 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/02 00:53:18 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/11 20:54:28 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,25 @@ void		ft_free(char **tab_f, char **tab, t_env *envir, char *str)
 	ft_tabdel(ft_count_tab(tab_f), &tab_f);
 }
 
+int			ft_smallest_free(char *str, int check)
+{
+	free(str);
+	return (check);
+}
+
+void		ft_small_free(char *to_match, char **paths, char *tmp)
+{
+	free(to_match);
+	ft_tabdel(ft_count_tab(paths), &paths);
+	free(tmp);
+}
+
 static void	ft_puterror_2(int i, char *name)
 {
 	if (i == 4)
 	{
-		if (!access(name, F_OK) && access(name, X_OK) == -1)
-		{
-			ft_putstr("TomTomshell: permission denied: ");
-			ft_putendl(name);
-		}
-		else
-		{
-			ft_putstr("TomTomshell: command not found: ");
-			ft_putendl(name);
-		}
+		ft_putstr("TomTomshell: command not found: ");
+		ft_putendl(name);
 	}
 	else if (i == 5)
 	{
@@ -50,6 +55,11 @@ static void	ft_puterror_2(int i, char *name)
 	{
 		ft_putstr("Usage: \'unsetenv [VAR]\' will delete an environmental var");
 		ft_putendl("iable called VAR if it exists.");
+	}
+	else if (i == 10)
+	{
+		ft_putstr("TomTomshell: permission denied: ");
+		ft_putendl(name);
 	}
 }
 

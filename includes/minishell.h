@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 16:33:26 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/08 16:30:46 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/12 04:56:59 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,9 @@ int				col_number(void);
 void			ft_command_parsing(t_env *envir, char **tab);
 
 void			ft_free(char **tab_f, char **tab, t_env *env, char *str);
+void			ft_small_free(char *to_match, char **paths, char *tmp);
+int				ft_smallest_free(char *str, int ccheck);
+
+void			signalhandler(int sig_num);
 
 #endif

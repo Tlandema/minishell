@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 02:02:54 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/08 13:14:41 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/11 16:43:04 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int			ft_printest(int yes)
 
 static int	ft_key_press(long key, char **str, t_cur *cur)
 {
+	signal(SIGINT, signalhandler);
 	if (key > 31 && key < 127)
 		ft_ins_char(cur, *str, (char)key);
 	else if (key == 4414235 && cur->pos < cur->length)

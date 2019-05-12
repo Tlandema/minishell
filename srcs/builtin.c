@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 15:03:12 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/08 10:21:16 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/12 01:38:13 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,7 @@ void	ft_cd_builtin(char **tab, t_env *envir)
 	buff = ft_strnew(PATH_MAX);
 	i = ft_count_tab(tab);
 	if (i > 3)
-	{
 		ft_puterror(1, NULL, envir);
-		if (tab[3])
-			ft_putstr(tab[3]);
-	}
 	else if (tab[0] && tab[1] && tab[2])
 		ft_cd_2_arg(tab, envir);
 	else if (!tab[1])
