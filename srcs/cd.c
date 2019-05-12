@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 10:18:17 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/12 02:21:08 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/12 21:05:13 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,12 @@ static void	ft_replace(t_env *envir, char *str, char *to_r, char *r_by)
 	while (++j < i)
 		copy[j] = str[j];
 	i = i + ft_strlen(to_r);
-	if (!(r_by[0] == 34 && r_by[1] == 34))
-		while (r_by[k])
-		{
-			copy[j] = r_by[k];
-			j++;
-			k++;
-		}
+	while (r_by[k])
+	{
+		copy[j] = r_by[k];
+		j++;
+		k++;
+	}
 	while (str[i])
 		copy[j++] = str[i++];
 	if (ft_move_dir(envir, copy) == -1)

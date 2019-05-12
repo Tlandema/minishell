@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 14:08:04 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/12 02:21:09 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/05/12 21:13:56 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	ft_print_prompt(int r_o_g)
 		ft_putstr("\033[92m");
 	ft_putstr("Tsh ");
 	ft_putstr("\033[39m(\033[96m");
-	if (ft_strequ(&ft_strrchr(getcwd(path, PATH_MAX), '/')[1], "tlandema"))
+	if (ft_strequ(getcwd(path, PATH_MAX), "/Users/tlandema"))
 		ft_putstr("~");
 	else
 		ft_putstr(&ft_strrchr(getcwd(path, PATH_MAX), '/')[1]);
