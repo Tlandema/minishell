@@ -17,11 +17,13 @@
 
 static char	*ft_git_helper(char *tmp_path)
 {
-	int		fd;
+	int	fd;
 	char	*str;
 
-	ft_putstr("git:(");
 	ft_strcat(tmp_path, "/HEAD");
+	if (access(tmp_path, R_OK) != 0)
+		return (NULL);
+	ft_putstr("git:(");
 	fd = open(tmp_path, O_RDONLY);
 	get_next_line(fd, &str);
 	close(fd);
@@ -30,10 +32,16 @@ static char	*ft_git_helper(char *tmp_path)
 	return (str);
 }
 
-void		ft_git_helper2(char *tmp_path, char *path)
+static void	ft_git_helper2(char *tmp_path, char *path)
 {
 	ft_strcpy(tmp_path, path);
 	ft_strcat(tmp_path, "/.git");
+}
+
+static void	ft_dat_free(char *f1, char *f2)
+{
+	free(f1);
+	free(f2);
 }
 
 void		ft_print_git(char *path)
@@ -48,12 +56,12 @@ void		ft_print_git(char *path)
 	if (access(tmp_path, X_OK) == 0)
 	{
 		str = ft_git_helper(tmp_path);
+		if (str == NULL)
+			return ;
 		if (ft_strstr(str, "ref : refs/heads/"))
 			ft_putstr(ft_strchr(ft_strchr(str, '/'), '/'));
 		ft_putstr("\033[39;49m) ");
-		free(str);
-		free(tmp_path);
-		return ;
+		return (ft_dat_free(str, tmp_path));
 	}
 	else
 	{

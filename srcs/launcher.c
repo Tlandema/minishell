@@ -25,10 +25,15 @@ static void	ft_print_prompt(int r_o_g)
 		ft_putstr("\033[92m");
 	ft_putstr("Tsh ");
 	ft_putstr("\033[39m(\033[96m");
-	if (ft_strequ(getcwd(path, PATH_MAX), "/Users/tlandema"))
+	if (getcwd(path, PATH_MAX) == NULL)
+	{
+		ft_putstr("I'm in the depth of shell\033[39;49m)");
+		return ;
+	}
+	if (ft_strequ(path, "/Users/tlandema"))
 		ft_putstr("~");
 	else
-		ft_putstr(&ft_strrchr(getcwd(path, PATH_MAX), '/')[1]);
+		ft_putstr(&ft_strrchr(path, '/')[1]);
 	ft_putstr("\033[39;49m) ");
 	if (ft_strstr(path, "/") && !ft_strequ(path, "/"))
 		ft_print_git(path);
