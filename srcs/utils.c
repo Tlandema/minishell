@@ -6,13 +6,13 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 15:33:19 by tlandema          #+#    #+#             */
-/*   Updated: 2019/08/05 14:21:58 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/08/05 14:52:07 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_get_v_env(char *match)
+char		*ft_get_v_env(char *match)
 {
 	int		i;
 	char	**var;
