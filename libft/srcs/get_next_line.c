@@ -6,15 +6,14 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 09:37:36 by tlandema          #+#    #+#             */
-/*   Updated: 2019/07/23 16:29:21 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/08/05 15:04:59 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
-#include "libft.h"
-#include "get_next_line.h"
 #include <stdlib.h>
 #include <unistd.h>
+#include "libft.h"
 
 static char	*reading(char **str, char *buff, int fd)
 {
