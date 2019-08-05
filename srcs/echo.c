@@ -5,33 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/18 11:39:10 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/02 00:53:05 by tlandema         ###   ########.fr       */
+/*   Created: 2019/08/01 14:04:49 by tlandema          #+#    #+#             */
+/*   Updated: 2019/08/03 18:07:12 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/includes/libft.h"
-#include "../libft/includes/get_next_line.h"
-#include "../includes/minishell.h"
+#include "minishell.h"
 
-static int	ft_echo_helper_2(t_env *envir, char *str, int i)
-{
-	char	*tmp;
-	char	*to_f;
-
-	tmp = ft_strsub(&str[i], 0, ft_stristr(&str[i], " "));
-	to_f = NULL;
-	if (tmp[ft_strlen(tmp) - 1] == '"' || tmp[ft_strlen(tmp) - 1] == '\'')
-		ft_echo_dolss(envir, (to_f = ft_strsub(tmp, 0, ft_strlen(tmp) - 1)));
-	else
-		ft_echo_dolss(envir, tmp);
-	free(tmp);
-	free(to_f);
-	i += ft_stristr(&str[i], " ");
-	return (i);
-}
-
-void		ft_echo_helper(t_env *envir, char **tab)
+void		ft_echo_helper(char **tab)
 {
 	int		i;
 	int		size;
@@ -51,36 +32,21 @@ void		ft_echo_helper(t_env *envir, char **tab)
 	}
 	i = -1;
 	while (str[++i])
-	{
-		if (str[i] == '$')
-			i = ft_echo_helper_2(envir, str, i);
-		else if (str[i] != '"' && str[i] != '\'')
+		if (str[i] != '"' && str[i] != '\'')
 			ft_putchar(str[i]);
-	}
-	free(str);
+	ft_strdel(&str);
 }
 
-void		ft_echo_dolss(t_env *envir, char *str)
+void		ft_echo_builtin(char **tab)
 {
-	int		i;
-	char	*str_tmp;
-	char	*str_tmp2;
-	char	*str_tmp3;
-	char	**tmp;
+	int i;
 
-	i = 0;
-	tmp = copy_tab(envir);
-	while (tmp[i])
+	if (tab[1])
 	{
-		str_tmp = ft_strdup(tmp[i]);
-		str_tmp = ft_strrev(str_tmp);
-		str_tmp2 = ft_strdup(str_tmp);
-		str_tmp3 = ft_strrev(&ft_strchr(str_tmp, '=')[1]);
-		if (ft_strequ(&str[1], str_tmp3))
-			ft_putstr(&ft_strchr(ft_strrev(str_tmp), '=')[1]);
-		i++;
-		free(str_tmp);
-		free(str_tmp2);
+		i = 1;
+		if (ft_strequ(tab[1], "-n"))
+			i = 2;
+		ft_echo_helper(&tab[i]);
 	}
-	ft_tabdel(ft_count_tab(tmp), &tmp);
+	ft_putchar('\n');
 }

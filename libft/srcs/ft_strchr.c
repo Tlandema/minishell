@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 13:40:24 by tlandema          #+#    #+#             */
-/*   Updated: 2019/01/05 08:38:58 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/08/03 10:40:02 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strchr(const char *s, int c)
 	int		len;
 
 	i = 0;
+	if (!s)
+		return (NULL);
 	len = ft_strlen(s);
 	while (i <= len)
 	{

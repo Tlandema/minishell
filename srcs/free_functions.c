@@ -1,28 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   free_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 15:51:03 by tlandema          #+#    #+#             */
-/*   Updated: 2019/08/03 10:38:47 by tlandema         ###   ########.fr       */
+/*   Created: 2019/07/31 14:27:13 by tlandema          #+#    #+#             */
+/*   Updated: 2019/08/03 17:41:32 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <unistd.h>
+#include "minishell.h"
 
-void	ft_putstr(char const *s)
+void	ft_small_free(char *to_match, char **tab, char *tmp)
+{
+	int i;
+
+	i = -1;
+	ft_strdel(&to_match);
+	ft_strdel(&tmp);
+	if (tab)
+		while (tab[++i])
+			ft_strdel(&tab[i]);
+	ft_memdel((void **)&tab);
+}
+
+int		ft_smallest_free(char *str, int check)
+{
+	ft_strdel(&str);
+	return (check);
+}
+
+int		ft_free_v_env(char **tab)
 {
 	int i;
 
 	i = 0;
-	if (!s)
-		return ;
-	while (s[i])
-	{
-		ft_putchar(s[i]);
-		i++;
-	}
+	while (tab[i])
+		ft_strdel(&tab[i++]);
+	ft_memdel((void **)&tab);
+	return (1);
 }

@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   the_tab.c                                          :+:      :+:    :+:   */
+/*   tab_builder.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/08 14:10:25 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/12 04:55:50 by tlandema         ###   ########.fr       */
+/*   Created: 2019/08/01 14:56:58 by tlandema          #+#    #+#             */
+/*   Updated: 2019/08/01 15:37:34 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/includes/libft.h"
-#include "../libft/includes/get_next_line.h"
-#include "../includes/minishell.h"
+#include "minishell.h"
 
 static int	ft_count_words(char *s)
 {
@@ -43,7 +41,7 @@ static int	ft_count_words(char *s)
 static int	ft_count_args(char **tab, int bole)
 {
 	int	count;
-	int i;
+	int	i;
 
 	count = 0;
 	i = 0;
@@ -67,8 +65,8 @@ static int	ft_count_args(char **tab, int bole)
 
 static int	ft_how_many_quote(char *str)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -109,7 +107,7 @@ static void	ft_fill_the_tab(char **fin_tab, char **tp_tab, int bole)
 	}
 }
 
-char		**ft_the_tab(char *str)
+char		**ft_tab_builder(char *str)
 {
 	char	**first_tab;
 	int		arg_num;

@@ -6,7 +6,7 @@
 #    By: tlandema <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 12:04:00 by tlandema          #+#    #+#              #
-#    Updated: 2019/05/12 04:56:41 by tlandema         ###   ########.fr        #
+#    Updated: 2019/08/02 15:30:28 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = minishell
 
 CC = gcc
 
-CFLAGS = -g3 -Wall -Wextra -Werror 
+CFLAGS = -g3 -Wall -Wextra -Werror -I./includes -I./libft/includes
 
 LIB = libft.a
 
@@ -24,20 +24,24 @@ INC = includes
 
 SRCS_PATH = srcs
 
-SRCS =	launcher.c \
-		git.c \
-		line_editor.c \
-		memoline.c \
-		the_tab.c \
-		autocomplete.c \
-		term.c \
-		cursor.c \
-		command.c \
-		environ.c \
-		builtin.c \
+SRCS =	cd.c \
 		echo.c \
-		cd.c \
-		error.c
+		envs.c \
+		main.c \
+		term.c \
+		loop.c \
+		utils.c \
+		cursor.c \
+		prompt.c \
+		signals.c \
+		dollars.c \
+		command.c \
+		memoline.c \
+		tab_builder.c \
+		line_editor.c \
+		print_error.c \
+		autocomplete.c \
+		free_functions.c \
 
 OBJS_PATH = obj
 
@@ -65,6 +69,8 @@ printf "%b" "$(COM_COLOR)$(COM_STRING) $(OBJ_COLOR)$(@F)$(NO_COLOR)\r"; \
 	else  \
 	printf "%-60b%b" "$(COM_COLOR)$(BACK_COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $@" "$(ERROR_COLOR)$(ERROR_STRING)$(NO_COLOR)\n"   ; \
 	fi; \
+	cat $@.log; \
+	rm -f $@.log; \
 	exit $$RESULT
 endef
 

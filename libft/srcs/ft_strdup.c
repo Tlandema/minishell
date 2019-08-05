@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 19:02:55 by tlandema          #+#    #+#             */
-/*   Updated: 2019/01/05 08:40:10 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/07/02 16:14:53 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strdup(const char *s1)
 	char	*s2;
 	int		i;
 
+	if (!s1)
+		return (NULL);
 	if (!(s2 = (char*)ft_strnew(ft_strlen(s1))))
 		return (0);
 	i = 0;
@@ -26,6 +28,5 @@ char	*ft_strdup(const char *s1)
 		s2[i] = s1[i];
 		i++;
 	}
-	s2[i] = '\0';
 	return (s2);
 }

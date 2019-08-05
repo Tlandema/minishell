@@ -6,19 +6,19 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 09:37:36 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/01 00:54:17 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/07/23 16:29:21 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
 #include "libft.h"
 #include "get_next_line.h"
+#include <stdlib.h>
+#include <unistd.h>
 
 static char	*reading(char **str, char *buff, int fd)
 {
-	char	*truc;
+	char	*tmp;
 	int		ret;
 
 	ret = 1;
@@ -28,13 +28,12 @@ static char	*reading(char **str, char *buff, int fd)
 		if (ret)
 		{
 			buff[ret] = '\0';
-			truc = *str;
+			tmp = *str;
 			if (!(*str = ft_strjoin(*str, buff)))
 				return (NULL);
-			free(truc);
+			ft_strdel(&tmp);
 		}
 	}
-	free(buff);
 	return (*str);
 }
 
@@ -42,43 +41,47 @@ static char	*a_line(char **str)
 {
 	char	*buff;
 	char	*line;
-	char	*truc;
+	char	*tmp;
 
 	buff = ft_strchr(*str, '\n');
-	truc = NULL;
+	tmp = NULL;
 	if (buff)
 	{
 		if (!(line = ft_strndup(*str, buff - *str)))
 			return (NULL);
-		truc = *str;
+		tmp = *str;
 		if (!(*str = ft_strdup(buff + 1)))
 			return (NULL);
-		free(truc);
+		ft_strdel(&tmp);
 	}
 	else if (!(line = ft_strdup(*str)))
 		return (NULL);
-	free(*str);
-	*str = NULL;
 	return (line);
+}
+
+static int	clean(char *to_f)
+{
+	ft_strdel(&to_f);
+	return (-1);
 }
 
 int			get_next_line(const int fd, char **line)
 {
 	static char	*str[4864];
-	char		*buff;
+	char		*buff[BUFF_SIZE + 1];
 
-	if (fd < 0 || !line || BUFF_SIZE <= 0 || \
-			!(buff = ft_strnew(BUFF_SIZE + 1)) \
+	if (fd < 0 || !line || BUFF_SIZE <= 0
 			|| read(fd, buff, 0) == -1 || \
 			(str[fd] == NULL && !(str[fd] = ft_strnew(0))))
 		return (-1);
-	if (!(reading(&str[fd], buff, fd)))
-		return (-1);
+	if (!(reading(&str[fd], (char *)buff, fd)))
+		return (clean(str[fd]));
 	if (*str[fd])
 	{
 		if (!(*line = a_line(&str[fd])))
-			return (-1);
+			return (clean(str[fd]));
 		return (1);
 	}
+	ft_strdel(&str[fd]);
 	return (0);
 }

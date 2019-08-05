@@ -5,14 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/02 06:08:00 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/03 10:23:31 by tlandema         ###   ########.fr       */
+/*   Created: 2019/08/01 09:33:24 by tlandema          #+#    #+#             */
+/*   Updated: 2019/08/01 09:37:47 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/includes/libft.h"
-#include "../libft/includes/get_next_line.h"
-#include "../includes/minishell.h"
+#include "minishell.h"
 
 void	ft_cur_start_pos(t_cur *cur)
 {
