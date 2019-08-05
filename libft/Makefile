@@ -6,7 +6,7 @@
 #    By: tlandema <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 12:04:00 by tlandema          #+#    #+#              #
-#    Updated: 2019/05/08 19:13:59 by tlandema         ###   ########.fr        #
+#    Updated: 2019/08/04 15:23:48 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,12 @@ SRCS_PATH = srcs
 
 SRCS = get_next_line.c \
 	   ft_stristr.c \
+	   ft_str_join.c \
+	   ft_atoli.c \
+	   ft_quicksort.c \
 	   ft_last_char.c \
 	   ft_split_white.c \
 	   ft_join_tab.c \
-	   get_next_instruction.c \
 	   ft_strjoinfree.c \
 	   ft_count_tab.c \
 	   ft_strrev.c \
@@ -106,18 +108,6 @@ SRCS = get_next_line.c \
 	   ft_lstiter.c \
 	   ft_lstmap.c \
 	   ft_lstapp.c \
-	   choose_printer.c \
-	   ft_printf.c \
-	   parsers.c \
-	   print_gap.c \
-	   printer_c.c \
-	   printer_f.c \
-	   printer_int.c \
-	   printer_o.c \
-	   printer_pointer.c \
-	   printer_string.c \
-	   printer_u.c \
-	   printer_x.c \
 
 COM_COLOR   = \033[0;34m
 OBJ_COLOR   = \033[0;36m

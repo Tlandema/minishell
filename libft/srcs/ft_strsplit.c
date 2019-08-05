@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 16:38:43 by tlandema          #+#    #+#             */
-/*   Updated: 2019/03/20 14:56:14 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/06/18 10:34:13 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ char		**ft_strsplit(char const *s, char c)
 	tab_size = ft_tab_size(s, c);
 	if (!(tab = (char**)ft_memalloc(sizeof(char*) * (tab_size + 1))))
 		return (NULL);
-	tab[tab_size] = 0;
+	tab[tab_size] = NULL;
 	i = 0;
 	while (i < tab_size)
 	{

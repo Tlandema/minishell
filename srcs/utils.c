@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 15:33:19 by tlandema          #+#    #+#             */
-/*   Updated: 2019/08/02 14:07:59 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/08/05 14:21:58 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ char	*ft_get_v_env(char *match)
 	char	*cpy;
 
 	i = 0;
-	(void)match;
 	var = copy_tab();
 	while (var[i])
 	{
@@ -37,16 +36,24 @@ char	*ft_get_v_env(char *match)
 	return (NULL);
 }
 
-char	**copy_tab(void)
+static char	**ft_free_copy(char **copy)
+{
+	ft_tabdel(ft_count_tab(copy), &copy);
+	return (NULL);
+}
+
+char		**copy_tab(void)
 {
 	int		i;
 	char	**copy;
 
 	i = ft_count_tab(g_env->v_env);
-	copy = (char **)ft_memalloc(sizeof(char *) * (i + 1));
+	if (!(copy = (char **)ft_memalloc(sizeof(char *) * (i + 1))))
+		return (NULL);
 	i = -1;
 	while (g_env->v_env[++i])
-		copy[i] = ft_strdup(g_env->v_env[i]);
+		if (!(copy[i] = ft_strdup(g_env->v_env[i])))
+			return (ft_free_copy(copy));
 	copy[i] = NULL;
 	return (copy);
 }

@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 17:04:57 by tlandema          #+#    #+#             */
-/*   Updated: 2019/05/08 19:40:37 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/06/17 16:53:23 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+char				*ft_str_join(char *str, char *str3);
 int					get_next_line(const int fd, char **line);
 char				ft_last_char(char *str);
 int					ft_join_tab(char **final_tab, char **tmp_tab, int j);
 
+void				ft_quicksort(int *tab, int low, int high);
 int					ft_count_tab(char **tab);
 int					ft_stristr(const char *haystack, const char *needle);
 size_t				ft_strlen(const char *s);
@@ -53,6 +55,7 @@ char				*ft_strnstr(const char *haystack, \
 char				*ft_itoa_ubase(unsigned long long ul, char *base);
 void				ft_ftoa(long double n, char *res, int afterpoint);
 int					ft_atoi(const char *str);
+long int			ft_atoli(const char *str);
 char				*ft_itoa(int n);
 
 int					ft_isupper(int c);

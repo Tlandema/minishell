@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_gap.c                                        :+:      :+:    :+:   */
+/*   ft_atoli.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/13 17:06:38 by tlandema          #+#    #+#             */
-/*   Updated: 2019/02/10 09:10:11 by tlandema         ###   ########.fr       */
+/*   Created: 2019/01/05 08:14:00 by tlandema          #+#    #+#             */
+/*   Updated: 2019/06/12 04:03:29 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
-#include <stdlib.h>
-
-void	print_gap(t_arr *arr, char c, int len, int update_len)
+long int	ft_atoli(const char *str)
 {
-	char *str;
+	int			i;
+	long long	neg;
+	long long	num;
 
-	if (len > 0)
+	i = 0;
+	neg = 1;
+	num = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		if (update_len)
-			arr->size = arr->size + len;
-		if (!(str = ft_strnew(len)))
-			exit(-1);
-		ft_memset(str, c, len);
-		ft_putstr(str);
-		free(str);
+		if (str[i] == '-')
+			neg *= -1;
+		i++;
 	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num = num * 10 + (str[i] - '0') * neg;
+		i++;
+	}
+	return ((long int)num);
 }

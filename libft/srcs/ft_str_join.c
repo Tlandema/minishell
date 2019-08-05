@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_str_join.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/13 17:28:32 by tlandema          #+#    #+#             */
-/*   Updated: 2019/08/04 16:20:41 by tlandema         ###   ########.fr       */
+/*   Created: 2019/06/17 14:29:29 by tlandema          #+#    #+#             */
+/*   Updated: 2019/06/18 10:48:38 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-void	*ft_memalloc(size_t size)
+char	*ft_str_join(char *str1, char *str2)
 {
-	void	*s;
+	char	*str3;
 
-	if (size == 0)
+	if (str2 == NULL || !*str2)
 		return (NULL);
-	if (!(s = (void*)malloc(size)))
+	if (str1 == NULL || !*str1)
+		return (ft_strdup(str2));
+	if (!(str3 = ft_strnew(ft_strlen(str1) + ft_strlen(str2) + 1)))
 		return (NULL);
-	ft_bzero(s, size);
-	return (s);
+	ft_strcat(str3, str1);
+	ft_strcat(str3, "\n");
+	ft_strcat(str3, str2);
+	free(str1);
+	return (str3);
 }

@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 15:58:26 by tlandema          #+#    #+#             */
-/*   Updated: 2019/01/05 08:36:17 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/06/20 16:59:45 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 void	ft_putendl(char const *s)
 {
 	if (s == NULL)
-		return ((void)0);
-	while (*s)
-		write(1, s++, 1);
-	write(1, &"\n", 1);
+		return ;
+	write(1, s, ft_strlen(s));
+	write(1, "\n", 1);
 }

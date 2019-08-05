@@ -6,15 +6,15 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 08:14:00 by tlandema          #+#    #+#             */
-/*   Updated: 2019/01/05 08:23:15 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/08/04 15:29:33 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_atoi(const char *str)
 {
 	int			i;
-	long long	neg;
-	long long	num;
+	int long	neg;
+	int long	num;
 
 	i = 0;
 	neg = 1;

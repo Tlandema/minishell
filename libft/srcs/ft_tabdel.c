@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 19:34:17 by tlandema          #+#    #+#             */
-/*   Updated: 2019/08/03 11:12:05 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/03/04 10:50:50 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ void	ft_tabdel(int i, char ***tab)
 		ft_strdel(&(*tab)[i]);
 		i--;
 	}
-	ft_memdel((void **)tab);
+	free(*tab);
+	*tab = NULL;
 }

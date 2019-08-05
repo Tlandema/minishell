@@ -6,9 +6,11 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 21:13:06 by tlandema          #+#    #+#             */
-/*   Updated: 2019/01/05 08:38:46 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/06/18 10:29:57 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strcat(char *s1, const char *s2)
 {
@@ -16,6 +18,8 @@ char	*ft_strcat(char *s1, const char *s2)
 	int		k;
 
 	i = 0;
+	if (!s1 || !s2)
+		return (NULL);
 	while (s1[i])
 		i++;
 	k = 0;
