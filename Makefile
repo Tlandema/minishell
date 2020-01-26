@@ -6,11 +6,12 @@
 #    By: tlandema <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 12:04:00 by tlandema          #+#    #+#              #
-#    Updated: 2019/08/09 13:06:01 by tlandema         ###   ########.fr        #
+#    Updated: 2020/01/26 07:06:39 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
+BINARY = $(NAME)
 
 CC = gcc
 
@@ -58,61 +59,37 @@ ERROR_COLOR = \033[0;31m
 WARN_COLOR  = \033[0;33m
 NO_COLOR    = \033[m
 
-define run_and_test_r
-printf "%b" "$(COM_COLOR)$(COM_STRING) $(OBJ_COLOR)$(@F)$(NO_COLOR)\r"; \
-	$(1) 2> $@.log; \
-	RESULT=$$?; \
-	if [ $$RESULT -ne 0 ]; then \
-	printf "%-60b%b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $(@F)" "$(OK_COLOR)$(OK_STRING)$(NO_COLOR)\n"   ; \
-	elif [ -s $@.log ]; then \
-	printf "%-60b%b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $@" "$(WARN_COLOR)$(WARN_STRING)$(NO_COLOR)\n"   ; \
-	else  \
-	printf "%-60b%b" "$(COM_COLOR)$(BACK_COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $@" "$(ERROR_COLOR)$(ERROR_STRING)$(NO_COLOR)\n"   ; \
-	fi; \
-	cat $@.log; \
-	rm -f $@.log; \
-	exit $$RESULT
-endef
+GREEN		= \033[0;32m
+RED			= \033[0;31m
+RESET		= \033[0m
 
-define run_and_test
-printf "%b" "$(COM_COLOR)$(COM_STRING) $(OBJ_COLOR)$(@F)$(NO_COLOR)\r"; \
-	$(1) 2> $@.log; \
-	RESULT=$$?; \
-	if [ $$RESULT -ne 0 ]; then \
-	printf "%-60b%b" "$(COM_COLOR)$(BACK_COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $@" "$(ERROR_COLOR)$(ERROR_STRING)$(NO_COLOR)\n"   ; \
-	elif [ -s $@.log ]; then \
-	printf "%-60b%b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $@" "$(WARN_COLOR)$(WARN_STRING)$(NO_COLOR)\n"   ; \
-	else  \
-	printf "%-60b%b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $(@F)" "$(OK_COLOR)$(OK_STRING)$(NO_COLOR)\n"   ; \
-	fi; \
-	cat $@.log; \
-	rm -f $@.log; \
-	exit $$RESULT
-endef
+BIN_STRING  = Binary
+DEL_STRING = Deleted.
+CREA_STRING = Created.
+COM_STRING = Compiled.
 
-OK_STRING    = "[OK]"
-ERROR_STRING = "[ERROR]"
-WARN_STRING  = "[WARNING]"
-COM_STRING   = "Compiling"
+.PHONY: all fcean clean re
+.SILENT:
 
 all: $(NAME)
 
 $(NAME): $(INC) $(D_OBJS) $(D_LIB)
-	@$(call run_and_test, $(CC) $(CFLAGS) -ltermcap -o $(NAME) -I$(INC) $(D_OBJS) -L./$(LIB_PATH) -lft)
+	$(CC) $(CFLAGS) -ltermcap -o $(NAME) -I$(INC) $(D_OBJS) -L./$(LIB_PATH) -lft
+	printf "%-20b%-60b%b" "$(BINARY):" "$(GREEN)$(BIN_STRING)" "$(COM_STRING)$(RESET)\n"
 
 $(OBJS_PATH)/%.o: $(SRCS_PATH)/%.c
-	@$(call run_and_test, $(CC) $(CFLAGS) -o $@ -c $< -I$(LIB_PATH))
+	$(CC) $(CFLAGS) -o $@ -c $< -I$(LIB_PATH)
+	printf "%-20b%-60b%b" "$(BINARY):" "$(GREEN)$@" "$(CREA_STRING)$(RESET)\r"
 
 $(D_LIB) :
 	@make -C libft
 
-norme:
-	@$(call run_and_test_r, norminette | grep -v 'Warning: Not a valid file' | grep -B 1 -e 'Error' -e 'Warning')
-
 clean:
-	@$(call run_and_test, rm -f $(D_OBJS) && make clean -C libft)
+	rm -f $(D_OBJS) && make clean -C libft
+	printf "%-20b%-60b%b" "$(BINARY):" "$(RED)$(OBJS_PATH)" "$(DEL_STRING)$(RESET)\n"
 
 fclean: clean
-	@$(call run_and_test, rm -f $(NAME) && rm -f libft/libft.a)
+	rm -f $(NAME) && rm -f libft/libft.a
+	printf "%-20b%-60b%b" "$(BINARY):" "$(RED)$(BIN_STRING)" "$(DEL_STRING)$(RESET)\n"
 
 re: fclean all

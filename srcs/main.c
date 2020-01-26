@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:46:43 by tlandema          #+#    #+#             */
-/*   Updated: 2019/08/03 12:57:15 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/07 08:13:18 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_create_environ(char **envp)
 	int		i;
 
 	i = 0;
-	if (envp[0])
+	if (envp || envp[0])
 	{
 		i = ft_count_tab(envp);
 		if (!(g_env->v_env = (char **)ft_memalloc(sizeof(char *) * ((i + 1)))))
